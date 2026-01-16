@@ -1,0 +1,20 @@
+{
+  "name": "miplantillaweb",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/gregorylara/plantillaWeb_b5#readme",
+  "bugs": {
+    "url": "https://github.com/gregorylara/plantillaWeb_b5/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gregorylara/plantillaWeb_b5.git"
+  },
+  "license": "ISC",
+  "author": "Gregory Lara",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
