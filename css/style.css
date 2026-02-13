@@ -27,7 +27,9 @@ a{
 a:hover{
   color: white;
 }
-
+header{
+  width: 100%;
+}
 #barraContacto{
   background-color: var(--acento);
   padding: 5px;
@@ -117,14 +119,14 @@ footer a:hover {
 
 /* Responsive Barra Contacto */
 @media (max-width: 768px) {
-  #barraContacto,
+  #barraContacto .container,
   #barraFooter {
     flex-direction: column;
     gap: 15px;
     padding: 10px 0;
   }
   
-  #barraContacto > div,
+  #barraContacto .container > div,
   #barraFooter > div {
     flex-wrap: wrap;
     justify-content: center;
