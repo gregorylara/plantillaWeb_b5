@@ -9,6 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -84,13 +85,13 @@
                         <a class="nav-link disabled" href="./servicios.html">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./sobre.html">Sobre</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="./portafolio.html">Portafolio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./contacto.html">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./acerca.html">Acerca de</a>
                     </li>
                 </ul>
             </div>
@@ -100,13 +101,371 @@
 <!-- FIN HEADER -->
 
   <!-- MAIN -->
-  <main>
+  <main class="fondo">
 
-    
+    <!-- Hero Section -->
+    <section class="container py-5 text-center">
+        <h1 class="gradient-text display-3 fw-bold mb-4">Nuestros Servicios</h1>
+        <p class="lead text-white-50 mx-auto text-narrow-lg">
+            Ofrecemos soluciones digitales completas, desde el diseño hasta el despliegue. Cada proyecto es único y seleccionamos las tecnologías ideales según sus necesidades específicas.
+        </p>
+    </section>
 
+    <!-- DESARROLLO WEB -->
+    <section class="container py-5">
+        <h2 class="text-center fw-bold mb-3"><i class="bi bi-globe"></i> <span class="gradient-text">Desarrollo Web</span></h2>
+        <p class="text-white-50 text-center mx-auto mb-5 text-narrow">
+            Creamos sitios web y aplicaciones a medida utilizando las tecnologías más modernas del mercado. A continuación te explicamos qué tipo de proyecto necesitas y qué tecnologías emplearemos para hacerlo realidad.
+        </p>
+
+        <div class="row g-4">
+            <!-- Landing Page -->
+            <div class="col-lg-6">
+                <div class="card h-100 card-full">
+                    <div class="card-body p-4">
+                        <h3 class="fw-bold mb-3"><i class="bi bi-rocket-takeoff"></i> <span class="gradient-text">Landing Pages</span></h3>
+                        <p class="text-white-50">
+                            Páginas de aterrizaje diseñadas para convertir visitantes en clientes. Ideales para campañas de marketing, lanzamientos de productos o captación de leads.
+                        </p>
+                        <h5 class="gradient-text mt-4 mb-2">Tecnologías utilizadas</h5>
+                        <p class="text-white-50 small">
+                            <strong class="text-white">HTML5 &amp; CSS3:</strong> La base de toda web. HTML estructura el contenido y CSS lo estiliza. Usamos CSS moderno con animaciones y efectos visuales.<br><br>
+                            <strong class="text-white">JavaScript:</strong> Añade interactividad: formularios dinámicos, sliders, animaciones al hacer scroll, y validaciones en tiempo real.<br><br>
+                            <strong class="text-white">Bootstrap:</strong> Framework que permite crear diseños responsivos (adaptables a móviles, tablets y escritorio) de forma rápida y consistente.
+                        </p>
+                        <div class="d-flex flex-wrap gap-2 mt-3">
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">HTML5</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">CSS3</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">JavaScript</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">Bootstrap</span>
+                        </div>
+                        <hr class="border-secondary opacity-25 mt-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-white-50"><i class="bi bi-clock"></i> Tiempo estimado</small>
+                                <p class="text-white fw-bold mb-0">1 — 2 semanas</p>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-white-50"><i class="bi bi-clipboard-check"></i> Incluye</small>
+                                <p class="text-white fw-bold mb-0">Diseño + SEO base</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página Corporativa -->
+            <div class="col-lg-6">
+                <div class="card h-100 card-full">
+                    <div class="card-body p-4">
+                        <h3 class="fw-bold mb-3"><i class="bi bi-building"></i> <span class="gradient-text">Páginas Corporativas</span></h3>
+                        <p class="text-white-50">
+                            Sitios web multipágina para empresas que necesitan presencia digital profesional: inicio, servicios, portafolio, equipo, blog y contacto.
+                        </p>
+                        <h5 class="gradient-text mt-4 mb-2">Tecnologías utilizadas</h5>
+                        <p class="text-white-50 small">
+                            <strong class="text-white">React o Vue.js:</strong> Frameworks de JavaScript que crean interfaces dinámicas y rápidas. La página se actualiza sin recargar, ofreciendo una experiencia fluida similar a una app.<br><br>
+                            <strong class="text-white">Vite:</strong> Herramienta de compilación ultrarrápida que optimiza el código para que tu web cargue lo más rápido posible.<br><br>
+                            <strong class="text-white">Node.js:</strong> Permite ejecutar JavaScript en el servidor, gestionando formularios de contacto, envío de emails y lógica del backend.
+                        </p>
+                        <div class="d-flex flex-wrap gap-2 mt-3">
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">React</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">Vue.js</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">Vite</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">Node.js</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">SASS</span>
+                        </div>
+                        <hr class="border-secondary opacity-25 mt-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-white-50"><i class="bi bi-clock"></i> Tiempo estimado</small>
+                                <p class="text-white fw-bold mb-0">3 — 5 semanas</p>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-white-50"><i class="bi bi-clipboard-check"></i> Incluye</small>
+                                <p class="text-white fw-bold mb-0">CMS + Panel admin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- E-commerce -->
+            <div class="col-lg-6">
+                <div class="card h-100 card-full">
+                    <div class="card-body p-4">
+                        <h3 class="fw-bold mb-3"><i class="bi bi-cart3"></i> <span class="gradient-text">Tiendas Online (E-commerce)</span></h3>
+                        <p class="text-white-50">
+                            Plataformas de venta online con carrito de compras, pasarela de pagos, gestión de inventario y panel de administración.
+                        </p>
+                        <h5 class="gradient-text mt-4 mb-2">Tecnologías utilizadas</h5>
+                        <p class="text-white-50 small">
+                            <strong class="text-white">Next.js:</strong> Framework basado en React que genera páginas optimizadas para buscadores (SEO). Tus productos aparecerán mejor posicionados en Google.<br><br>
+                            <strong class="text-white">PostgreSQL / MongoDB:</strong> Bases de datos para tu tienda. PostgreSQL para datos estructurados (pedidos, transacciones); MongoDB para catálogos flexibles.<br><br>
+                            <strong class="text-white">Stripe / PayPal:</strong> Pasarelas de pago seguras que permiten cobrar con tarjeta, transferencia o monederos digitales de forma protegida.
+                        </p>
+                        <div class="d-flex flex-wrap gap-2 mt-3">
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">Next.js</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">PostgreSQL</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">MongoDB</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">Stripe</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">Node.js</span>
+                        </div>
+                        <hr class="border-secondary opacity-25 mt-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-white-50"><i class="bi bi-clock"></i> Tiempo estimado</small>
+                                <p class="text-white fw-bold mb-0">6 — 10 semanas</p>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-white-50"><i class="bi bi-clipboard-check"></i> Incluye</small>
+                                <p class="text-white fw-bold mb-0">Pagos + Inventario</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aplicaciones Web -->
+            <div class="col-lg-6">
+                <div class="card h-100 card-full">
+                    <div class="card-body p-4">
+                        <h3 class="fw-bold mb-3"><i class="bi bi-lightning-charge"></i> <span class="gradient-text">Aplicaciones Web (SaaS)</span></h3>
+                        <p class="text-white-50">
+                            Plataformas web completas con login de usuarios, dashboards, gestión de datos en tiempo real y funcionalidades avanzadas para startups y empresas.
+                        </p>
+                        <h5 class="gradient-text mt-4 mb-2">Tecnologías utilizadas</h5>
+                        <p class="text-white-50 small">
+                            <strong class="text-white">React + TypeScript:</strong> TypeScript añade tipado a JavaScript, reduciendo errores y haciendo el código más robusto y mantenible. Esencial para apps grandes.<br><br>
+                            <strong class="text-white">Express / NestJS:</strong> Frameworks de backend que crean APIs (la comunicación entre tu app y el servidor). NestJS es ideal para aplicaciones empresariales complejas.<br><br>
+                            <strong class="text-white">Docker:</strong> Empaqueta tu aplicación para que funcione exactamente igual en desarrollo, pruebas y producción.
+                        </p>
+                        <div class="d-flex flex-wrap gap-2 mt-3">
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">React</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">TypeScript</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">NestJS</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">Docker</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">AWS</span>
+                        </div>
+                        <hr class="border-secondary opacity-25 mt-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-white-50"><i class="bi bi-clock"></i> Tiempo estimado</small>
+                                <p class="text-white fw-bold mb-0">8 — 16 semanas</p>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-white-50"><i class="bi bi-clipboard-check"></i> Incluye</small>
+                                <p class="text-white fw-bold mb-0">API + Dashboard</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESARROLLO MÓVIL -->
+    <section class="container py-5">
+        <h2 class="text-center fw-bold mb-3"><i class="bi bi-phone"></i> <span class="gradient-text">Desarrollo Móvil</span></h2>
+        <p class="text-white-50 text-center mx-auto mb-5 text-narrow">
+            Creamos aplicaciones móviles nativas y multiplataforma que funcionan en iOS y Android desde un solo código base.
+        </p>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="card h-100 card-full">
+                    <div class="card-body p-4">
+                        <h3 class="fw-bold mb-3"><i class="bi bi-phone-vibrate"></i> <span class="gradient-text">Apps Multiplataforma</span></h3>
+                        <p class="text-white-50">
+                            Una sola base de código que genera apps para iOS y Android simultáneamente, reduciendo costes y tiempo de desarrollo hasta un 40%.
+                        </p>
+                        <h5 class="gradient-text mt-4 mb-2">Tecnologías utilizadas</h5>
+                        <p class="text-white-50 small">
+                            <strong class="text-white">React Native:</strong> Permite usar JavaScript para crear apps nativas. La app se ve y se siente como una app hecha específicamente para cada sistema operativo.<br><br>
+                            <strong class="text-white">Flutter:</strong> Alternativa de Google con el lenguaje Dart. Ideal para interfaces personalizadas y animaciones fluidas con control total de cada pixel.<br><br>
+                            <strong class="text-white">Firebase:</strong> Base de datos en tiempo real, autenticación, notificaciones push y hosting, todo sin necesidad de crear un servidor desde cero.
+                        </p>
+                        <div class="d-flex flex-wrap gap-2 mt-3">
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">React Native</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">Flutter</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">Firebase</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">Expo</span>
+                        </div>
+                        <hr class="border-secondary opacity-25 mt-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-white-50"><i class="bi bi-clock"></i> Tiempo estimado</small>
+                                <p class="text-white fw-bold mb-0">8 — 14 semanas</p>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-white-50"><i class="bi bi-clipboard-check"></i> Incluye</small>
+                                <p class="text-white fw-bold mb-0">iOS + Android</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card h-100 card-full">
+                    <div class="card-body p-4">
+                        <h3 class="fw-bold mb-3"><i class="bi bi-wrench"></i> <span class="gradient-text">Apps Nativas</span></h3>
+                        <p class="text-white-50">
+                            Para proyectos que requieren máximo rendimiento: juegos, realidad aumentada, o integración profunda con el hardware del dispositivo.
+                        </p>
+                        <h5 class="gradient-text mt-4 mb-2">Tecnologías utilizadas</h5>
+                        <p class="text-white-50 small">
+                            <strong class="text-white">Swift (iOS):</strong> Lenguaje oficial de Apple. Máximo rendimiento y acceso completo a cámara, GPS, sensores, Face ID.<br><br>
+                            <strong class="text-white">Kotlin (Android):</strong> Lenguaje moderno de Google. Más seguro y conciso que Java, con acceso total al ecosistema Android.<br><br>
+                            <strong class="text-white">Xcode / Android Studio:</strong> Entornos de desarrollo oficiales para probar, depurar y optimizar las apps en dispositivos reales.
+                        </p>
+                        <div class="d-flex flex-wrap gap-2 mt-3">
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">Swift</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">Kotlin</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">SwiftUI</span>
+                            <span class="badge bg-secondary px-3 py-2 tech-badge">Jetpack Compose</span>
+                        </div>
+                        <hr class="border-secondary opacity-25 mt-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-white-50"><i class="bi bi-clock"></i> Tiempo estimado</small>
+                                <p class="text-white fw-bold mb-0">10 — 20 semanas</p>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-white-50"><i class="bi bi-clipboard-check"></i> Incluye</small>
+                                <p class="text-white fw-bold mb-0">Alto rendimiento</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS ADICIONALES -->
+    <section class="container py-5">
+        <h2 class="text-center fw-bold mb-5"><i class="bi bi-bullseye"></i> <span class="gradient-text">Servicios Adicionales</span></h2>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 card-full">
+                    <div class="card-body p-4 text-center">
+                        <div class="mb-3 icon-lg"><i class="bi bi-palette"></i></div>
+                        <h4 class="gradient-text fw-bold mb-3">Diseño UI/UX</h4>
+                        <p class="text-white-50 small">Prototipos interactivos en Figma, investigación de usuarios, arquitectura de información y diseño de interfaces intuitivas.</p>
+                        <p class="text-white fw-bold small mt-3"><i class="bi bi-clock"></i> 2 — 4 semanas</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 card-full">
+                    <div class="card-body p-4 text-center">
+                        <div class="mb-3 icon-lg"><i class="bi bi-graph-up-arrow"></i></div>
+                        <h4 class="gradient-text fw-bold mb-3">SEO &amp; Marketing</h4>
+                        <p class="text-white-50 small">Optimización para buscadores, análisis de palabras clave, velocidad de carga, schema markup y estrategias de contenido.</p>
+                        <p class="text-white fw-bold small mt-3"><i class="bi bi-clock"></i> Continuo / mensual</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 card-full">
+                    <div class="card-body p-4 text-center">
+                        <div class="mb-3 icon-lg"><i class="bi bi-lightbulb"></i></div>
+                        <h4 class="gradient-text fw-bold mb-3">Consultoría</h4>
+                        <p class="text-white-50 small">Te ayudamos a elegir la mejor tecnología para tu proyecto, evaluando requisitos, presupuesto y escalabilidad a futuro.</p>
+                        <p class="text-white fw-bold small mt-3"><i class="bi bi-clock"></i> 1 — 2 sesiones</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 card-full">
+                    <div class="card-body p-4 text-center">
+                        <div class="mb-3 icon-lg"><i class="bi bi-shield-check"></i></div>
+                        <h4 class="gradient-text fw-bold mb-3">Mantenimiento</h4>
+                        <p class="text-white-50 small">Actualizaciones de seguridad, backups automáticos, monitoreo 24/7, corrección de errores y mejoras continuas.</p>
+                        <p class="text-white fw-bold small mt-3"><i class="bi bi-clock"></i> Plan mensual</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ¿Cómo elegimos la tecnología? -->
+    <section class="container py-5 mb-5">
+        <h2 class="text-center fw-bold mb-3"><i class="bi bi-cpu"></i> <span class="gradient-text">¿Cómo Elegimos la Tecnología Correcta?</span></h2>
+        <p class="text-white-50 text-center mx-auto mb-5 text-narrow">
+            No existe una tecnología universalmente "mejor". La elección depende de las necesidades de tu proyecto. Aquí te explicamos qué usamos según la funcionalidad que necesites:
+        </p>
+
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="accordion" id="techAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tech1">
+                                <i class="bi bi-display"></i> ¿Necesitas que se vea bien en todos los dispositivos?
+                            </button>
+                        </h2>
+                        <div id="tech1" class="accordion-collapse collapse" data-bs-parent="#techAccordion">
+                            <div class="accordion-body text-white-50">
+                                Usamos <strong class="text-white">CSS3 + Bootstrap</strong> para diseño responsivo. Bootstrap reorganiza automáticamente el contenido según el tamaño de pantalla: en escritorio 3 columnas, en tablet 2, en móvil 1. También usamos <strong class="text-white">media queries</strong> para ajustes específicos.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tech2">
+                                <i class="bi bi-lightning-charge"></i> ¿Tu web necesita cargar rápido?
+                            </button>
+                        </h2>
+                        <div id="tech2" class="accordion-collapse collapse" data-bs-parent="#techAccordion">
+                            <div class="accordion-body text-white-50">
+                                <strong class="text-white">Vite</strong> para compilar y optimizar el código, <strong class="text-white">lazy loading</strong> (carga diferida de imágenes), compresión con <strong class="text-white">gzip/brotli</strong>, y CDN para servir archivos desde el servidor más cercano al usuario. Objetivo: cargar en menos de 3 segundos.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tech3">
+                                <i class="bi bi-lock"></i> ¿Necesitas login de usuarios y datos seguros?
+                            </button>
+                        </h2>
+                        <div id="tech3" class="accordion-collapse collapse" data-bs-parent="#techAccordion">
+                            <div class="accordion-body text-white-50">
+                                <strong class="text-white">JWT</strong> para autenticación segura, <strong class="text-white">bcrypt</strong> para encriptar contraseñas (ni nosotros podemos verlas), <strong class="text-white">HTTPS/SSL</strong> para comunicación cifrada, y <strong class="text-white">OAuth 2.0</strong> para login social (Google, Facebook).
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tech4">
+                                <i class="bi bi-database"></i> ¿Necesitas almacenar mucha información?
+                            </button>
+                        </h2>
+                        <div id="tech4" class="accordion-collapse collapse" data-bs-parent="#techAccordion">
+                            <div class="accordion-body text-white-50">
+                                <strong class="text-white">PostgreSQL</strong> para datos estructurados (usuarios, pedidos) — como una hoja de Excel potente con relaciones entre tablas. <strong class="text-white">MongoDB</strong> para datos flexibles — almacena documentos sin estructura fija. <strong class="text-white">Redis</strong> para caché: datos temporales en memoria para respuestas ultrarrápidas.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tech5">
+                                <i class="bi bi-globe2"></i> ¿Tu proyecto necesita escalar a miles de usuarios?
+                            </button>
+                        </h2>
+                        <div id="tech5" class="accordion-collapse collapse" data-bs-parent="#techAccordion">
+                            <div class="accordion-body text-white-50">
+                                Desplegamos en <strong class="text-white">AWS / Google Cloud / Vercel</strong> con auto-escalado: cuando hay mucho tráfico, los servidores se multiplican automáticamente. <strong class="text-white">Docker</strong> empaqueta la app y <strong class="text-white">Kubernetes</strong> orquesta múltiples instancias. Tu app funciona igual con 10 o 10.000 usuarios.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
   </main>
-  <!-- FIN MAIN -->
+
 
   <!-- FOOTER -->
         <footer>

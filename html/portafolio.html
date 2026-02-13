@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -82,13 +83,13 @@
                     <a class="nav-link" href="./servicios.html">Servicios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./sobre.html">Sobre</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link disabled" href="./portafolio.html">Portafolio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./contacto.html">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./acerca.html">Acerca de</a>
                 </li>
             </ul>
         </div>
@@ -100,15 +101,177 @@
     <!-- MAIN -->
     <main>
 
-<h1 class="container text-center mt-5">Portfolio de Paginas Web</h1>
-<p class="container text-center">En esta seccion podras ver algunos de los proyectos que hemos realizado</p>
+<h1 class="container text-center mt-5"><span class="gradient-text">Portafolio de Proyectos</span></h1>
+<p class="container text-center mb-5">En esta seccion podras ver algunos de los proyectos que hemos realizado</p>
+
+<!-- Grid de Proyectos -->
+<div class="container">
+    <div class="row g-4">
+        <!-- Proyecto 1 - Jose Tattoo Artist -->
+        <div class="col-12 col-md-6 col-lg-6">
+            <div class="project-card">
+                <div class="iframe-container">
+                    <iframe src="https://josetattooartist.netlify.app/" title="Jose Tattoo Artist" loading="lazy"></iframe>
+                    <div class="project-controls">
+                        <button class="btn-control btn-zoom" onclick="zoomIframe(this)" aria-label="Ampliar vista">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                            </svg>
+                        </button>
+                        <button class="btn-control btn-open" onclick="openProject('https://josetattooartist.netlify.app/')" aria-label="Abrir proyecto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Jose Tattoo Artist</h3>
+                    <p>Landing Page para un tatuador profesional</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proyecto 2 - gregorylara.com -->
+        <div class="col-12 col-md-6 col-lg-6">
+            <div class="project-card">
+                <div class="iframe-container">
+                    <iframe src="https://gregorylara.com/" title="gregorylara.com" loading="lazy"></iframe>
+                    <div class="project-controls">
+                        <button class="btn-control btn-zoom" onclick="zoomIframe(this)" aria-label="Ampliar vista">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                            </svg>
+                        </button>
+                        <button class="btn-control btn-open" onclick="openProject('https://gregorylara.com/')" aria-label="Abrir proyecto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>gregorylara.com</h3>
+                    <p>Portfolio personal y blog de desarrollo web</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proyecto 3 - E-Commerce Demo -->
+        <div class="col-12 col-md-6 col-lg-6">
+            <div class="project-card">
+                <div class="iframe-container">
+                    <iframe src="https://demo.vercel.store/" title="E-Commerce Demo" loading="lazy"></iframe>
+                    <div class="project-controls">
+                        <button class="btn-control btn-zoom" onclick="zoomIframe(this)" aria-label="Ampliar vista">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                            </svg>
+                        </button>
+                        <button class="btn-control btn-open" onclick="openProject('https://demo.vercel.store/')" aria-label="Abrir proyecto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>E-Commerce Store</h3>
+                    <p>Tienda online moderna con carrito de compras</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proyecto 4 -->
+        <div class="col-12 col-md-6 col-lg-6">
+            <div class="project-card">
+                <div class="iframe-container">
+                    <iframe src="https://example.com" title="Proyecto 4" loading="lazy"></iframe>
+                    <div class="project-controls">
+                        <button class="btn-control btn-zoom" onclick="zoomIframe(this)" aria-label="Ampliar vista">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                            </svg>
+                        </button>
+                        <button class="btn-control btn-open" onclick="openProject('https://example.com')" aria-label="Abrir proyecto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Proyecto 4</h3>
+                    <p>Descripción breve del proyecto</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proyecto 5 -->
+        <div class="col-12 col-md-6 col-lg-6">
+            <div class="project-card">
+                <div class="iframe-container">
+                    <iframe src="https://example.com" title="Proyecto 5" loading="lazy"></iframe>
+                    <div class="project-controls">
+                        <button class="btn-control btn-zoom" onclick="zoomIframe(this)" aria-label="Ampliar vista">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                            </svg>
+                        </button>
+                        <button class="btn-control btn-open" onclick="openProject('https://example.com')" aria-label="Abrir proyecto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Proyecto 5</h3>
+                    <p>Descripción breve del proyecto</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proyecto 6 -->
+        <div class="col-12 col-md-6 col-lg-6">
+            <div class="project-card">
+                <div class="iframe-container">
+                    <iframe src="https://example.com" title="Proyecto 6" loading="lazy"></iframe>
+                    <div class="project-controls">
+                        <button class="btn-control btn-zoom" onclick="zoomIframe(this)" aria-label="Ampliar vista">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                            </svg>
+                        </button>
+                        <button class="btn-control btn-open" onclick="openProject('https://example.com')" aria-label="Abrir proyecto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Proyecto 6</h3>
+                    <p>Descripción breve del proyecto</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Zoom -->
+<div id="zoomModal" class="zoom-modal" onclick="closeZoom()">
+    <span class="close-zoom">&times;</span>
+    <iframe id="zoomedIframe" class="zoomed-content"></iframe>
+</div>
+
 
 
     </main>
     <!-- FIN MAIN -->
 
     <!-- FOOTER -->
-        <footer>
+        <footer class="mt-5">
             <div id="barraFooter" class="container d-flex justify-content-between align-items-center">
                 <div class="d-flex gap-5">
                     <a href="mailto: gcdesignstudio@gmail.com">
@@ -161,6 +324,9 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
     <!-- BOOTSTRAP -->
+    
+    <!-- MAIN JS -->
+    <script src="../src/main.js"></script>
 </body>
 
 </html>

@@ -31,6 +31,7 @@ header{
   width: 100%;
 }
 #barraContacto{
+  color: white;
   background-color: var(--acento);
   padding: 5px;
   width: 100%;
@@ -67,12 +68,16 @@ footer a:hover {
 
 /* Efectos hover para navbar */
 .navbar .nav-link {
+  color: white;
   transition: all 0.3s ease;
   position: relative;
 }
 
 .navbar .nav-link:hover {
-  color: var(--acento) !important;
+  background: linear-gradient(90deg, #9000ff 0%, #ff00ff 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   transform: translateY(-2px);
 }
 
@@ -83,7 +88,7 @@ footer a:hover {
   height: 2px;
   bottom: 0;
   left: 50%;
-  background-color: var(--acento);
+  background: linear-gradient(90deg, #9000ff, #ff00ff, #00d4ff);
   transition: all 0.3s ease;
   transform: translateX(-50%);
 }
@@ -91,6 +96,23 @@ footer a:hover {
 .navbar .nav-link:hover::after {
   width: 100%;
 }
+
+/* Estilo para links disabled */
+.navbar .nav-link.disabled {
+  color: #888 !important;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.navbar .nav-link.disabled:hover {
+  color: #888 !important;
+  transform: none;
+}
+
+.navbar .nav-link.disabled::after {
+  display: none;
+}
+
 .card{
   width: 100%; /* Allow grid to control width */
   max-width: 350px; /* Optional: keep them from getting too huge */
@@ -98,6 +120,13 @@ footer a:hover {
   border-radius: 10px;
   background-color: var(--fondo);
   margin: 0 auto; /* Center cards in their columns */
+  box-shadow: 0 8px 32px rgba(144, 0, 255, 0.25), 0 4px 16px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(144, 0, 255, 0.4), 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 .card img{
   height: 250px;
@@ -141,4 +170,383 @@ footer a:hover {
 .offcanvas{
   width: 30% !important;
   background-color: var(--fondo);
+}
+
+/* ===== PORTFOLIO STYLES ===== */
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(90deg, #9000ff 0%, #ff00ff 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+/* Tech Badge Animations */
+.tech-badge {
+  transition: all 0.3s ease;
+  cursor: default;
+  border: 1px solid transparent;
+}
+
+.tech-badge:hover {
+  transform: translateY(-3px) scale(1.08);
+  background: linear-gradient(135deg, #9000ff, #ff00ff) !important;
+  box-shadow: 0 4px 15px rgba(144, 0, 255, 0.4);
+  border-color: rgba(255, 0, 255, 0.5);
+}
+
+
+/* Project Cards */
+.project-card {
+  position: relative;
+  background: var(--fondo);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Borde animado con gradiente */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  padding: 4px;
+  background: linear-gradient(90deg, #9000ff, #ff00ff, #00d4ff, #9000ff);
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: gradientRotate 4s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes gradientRotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Iframe Container */
+.iframe-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  background: #1a1a1a;
+  overflow: hidden;
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: none; /* Evita interacción directa con el iframe */
+}
+
+/* Project Controls */
+.project-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.iframe-container:hover .project-controls {
+  opacity: 1;
+}
+
+/* Control Buttons */
+.btn-control {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--acento);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-control:hover {
+  background: var(--acento);
+  color: white;
+  transform: scale(1.1);
+}
+
+.btn-control:active {
+  transform: scale(0.95);
+}
+
+/* Project Info */
+.project-info {
+  padding: 20px;
+  flex-grow: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.project-info h3 {
+  color: var(--acento);
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.project-info p {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Zoom Modal */
+.zoom-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.close-zoom {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+  transition: color 0.3s ease;
+}
+
+.close-zoom:hover {
+  color: var(--acento);
+}
+
+.zoomed-content {
+  width: 90%;
+  height: 90%;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .project-controls {
+    opacity: 1; /* Siempre visible en móvil */
+  }
+  
+  .btn-control {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .btn-control svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .project-info h3 {
+    font-size: 1.1rem;
+  }
+  
+  .project-info p {
+    font-size: 0.9rem;
+  }
+  
+  .zoomed-content {
+    width: 95%;
+    height: 80%;
+  }
+  
+  .close-zoom {
+    right: 20px;
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .iframe-container {
+    padding-top: 75%; /* Más alto en móviles pequeños */
+  }
+  
+  .project-info {
+    padding: 15px;
+  }
+}
+
+/* ===== CONTACT FORM STYLES ===== */
+
+.form-control,
+.form-select {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--acento);
+  color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: #ff00ff;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(144, 0, 255, 0.3);
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.form-select option {
+  background-color: #1a1a2e;
+  color: #fff;
+}
+
+#contactForm .btn:hover {
+  box-shadow: 0 8px 25px rgba(144, 0, 255, 0.5);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* ===== ACCORDION / FAQ STYLES ===== */
+
+.accordion-item {
+  background-color: var(--fondo);
+  border: 1px solid var(--acento);
+  margin-bottom: 10px;
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+
+.accordion-button {
+  background-color: var(--fondo);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+  background: linear-gradient(135deg, rgba(144, 0, 255, 0.15), rgba(0, 212, 255, 0.1));
+  color: #fff;
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 8px rgba(144, 0, 255, 0.3);
+  border-color: var(--acento);
+}
+
+.accordion-button::after {
+  filter: invert(1);
+}
+
+.accordion-body {
+  background-color: var(--fondo);
+}
+
+/* Utility classes – servicios */
+.text-narrow {
+  max-width: 750px;
+}
+
+.text-narrow-lg {
+  max-width: 800px;
+}
+
+.card-full {
+  max-width: 100%;
+}
+
+.icon-lg {
+  font-size: 3rem;
+}
+
+/* Pricing & CTA */
+.btn-gradient {
+  background: linear-gradient(135deg, #9000ff, #ff00ff);
+  color: #fff;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(135deg, #a020ff, #ff33ff);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(144, 0, 255, 0.4);
+}
+
+.pricing-featured {
+  border: 2px solid rgba(144, 0, 255, 0.5);
+  box-shadow: 0 0 30px rgba(144, 0, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-ribbon {
+  position: absolute;
+  top: 32px;
+  right: -40px;
+  background: linear-gradient(135deg, #9000ff, #ff00ff);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px 50px;
+  line-height: 1;
+  transform: rotate(45deg);
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(144, 0, 255, 0.4);
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #9000ff, #ff00ff);
 }
