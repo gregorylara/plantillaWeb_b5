@@ -1,0 +1,747 @@
+/* ===== MLK APARTMENTS — CUSTOM STYLES ===== */
+
+/* ---------- VARIABLES ---------- */
+:root {
+    --gold: #c9a84c;
+    --gold-light: #e0c97a;
+    --gold-dark: #a88a30;
+    --dark: #1a1a2e;
+    --dark-surface: #16213e;
+    --body-bg: #faf9f6;
+    --text-dark: #222;
+    --text-muted: #6c757d;
+    --radius: 16px;
+    --radius-sm: 10px;
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.12);
+    --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ---------- BASE ---------- */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--body-bg);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+.text-gold {
+    color: var(--gold) !important;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.py-section {
+    padding: 5rem 0;
+}
+
+/* ---------- GOLD BUTTON ---------- */
+.btn-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: #1a1a1a;
+    border: none;
+    font-weight: 700;
+    border-radius: 50px;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(201, 168, 76, 0.35);
+    letter-spacing: 0.02em;
+}
+
+.btn-gold:hover {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #1a1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(201, 168, 76, 0.5);
+}
+
+.btn-outline-light {
+    border-radius: 50px;
+    font-weight: 600;
+    border-width: 2px;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+    padding: 1rem 0;
+    transition: var(--transition);
+    background: transparent;
+}
+
+.navbar.scrolled {
+    background: rgba(26, 26, 46, 0.95) !important;
+    backdrop-filter: blur(20px);
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff !important;
+    letter-spacing: -0.02em;
+}
+
+.navbar-brand i {
+    color: var(--gold);
+}
+
+.navbar .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    padding: 0.5rem 0.85rem !important;
+}
+
+.navbar .nav-link:hover {
+    color: var(--gold) !important;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-toggler-icon {
+    filter: brightness(10);
+}
+
+/* ---------- HERO ---------- */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 80px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 80%, rgba(201, 168, 76, 0.05) 0%, transparent 50%);
+    z-index: 0;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to top, var(--body-bg), transparent);
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 520px;
+    line-height: 1.7;
+}
+
+.promo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.15), rgba(201, 168, 76, 0.08));
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    color: var(--gold-light);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    backdrop-filter: blur(10px);
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); }
+    50% { box-shadow: 0 0 20px 4px rgba(201, 168, 76, 0.15); }
+}
+
+.hero-stats {
+    color: #fff;
+}
+
+.stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+    margin-top: 2px;
+}
+
+.stat-divider {
+    width: 1px;
+    background: rgba(255, 255, 255, 0.15);
+    align-self: stretch;
+}
+
+/* Hero Image */
+.hero-image-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(201, 168, 76, 0.2);
+    animation: float-subtle 6s ease-in-out infinite;
+}
+
+.hero-image-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    border: 2px solid rgba(201, 168, 76, 0.25);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+}
+
+@keyframes float-subtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ---------- PROMO BANNER ---------- */
+.promo-banner {
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold), var(--gold-dark));
+    background-size: 300% 100%;
+    animation: shimmer-banner 6s linear infinite;
+    color: #1a1a1a;
+    font-size: 0.9rem;
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes shimmer-banner {
+    0% { background-position: 100% 50%; }
+    100% { background-position: -100% 50%; }
+}
+
+/* ---------- SECTIONS ---------- */
+.section-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.12), rgba(201, 168, 76, 0.05));
+    color: var(--gold-dark);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    max-width: 620px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+/* ---------- APARTMENT CARDS ---------- */
+.apartment-card {
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.apartment-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.apartment-card.featured {
+    border: 2px solid var(--gold);
+    box-shadow: 0 8px 40px rgba(201, 168, 76, 0.2);
+}
+
+.apartment-card.featured:hover {
+    box-shadow: 0 20px 60px rgba(201, 168, 76, 0.3);
+}
+
+.featured-ribbon {
+    position: absolute;
+    top: 20px;
+    right: -35px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 6px 45px;
+    transform: rotate(45deg);
+    z-index: 5;
+    box-shadow: 0 2px 10px rgba(201, 168, 76, 0.4);
+}
+
+.apartment-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--dark);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 50px;
+    z-index: 5;
+    letter-spacing: 0.03em;
+}
+
+.apartment-image {
+    background: #f0ede6;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+    position: relative;
+    overflow: hidden;
+}
+
+.apartment-image::after {
+    content: 'FLOOR PLAN';
+    position: absolute;
+    bottom: 10px;
+    right: 14px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(0, 0, 0, 0.15);
+    text-transform: uppercase;
+}
+
+.apartment-image img {
+    max-height: 240px;
+    object-fit: contain;
+    transition: var(--transition);
+}
+
+.apartment-card:hover .apartment-image img {
+    transform: scale(1.05);
+}
+
+.apartment-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.apartment-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--dark);
+}
+
+.apartment-specs {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.apartment-specs i {
+    color: var(--gold);
+    margin-right: 4px;
+}
+
+.apartment-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.25rem 0;
+    flex-grow: 1;
+}
+
+.apartment-features li {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    padding: 4px 0;
+}
+
+.apartment-features i {
+    color: var(--gold);
+    margin-right: 6px;
+    font-size: 0.8rem;
+}
+
+.apartment-pricing {
+    background: linear-gradient(135deg, #faf6ec, #f5f0e0);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    margin-top: auto;
+}
+
+.price-original {
+    font-size: 1rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+}
+
+.price-original span {
+    font-size: 0.8rem;
+}
+
+.price-promo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.promo-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gold-dark);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.promo-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--dark);
+}
+
+.promo-price small {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+/* ---------- AMENITIES ---------- */
+.amenity-card {
+    background: #fff;
+    padding: 2rem 1.25rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.amenity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.amenity-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.12), rgba(201, 168, 76, 0.05));
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--gold-dark);
+    transition: var(--transition);
+}
+
+.amenity-card:hover .amenity-icon {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.amenity-card h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+}
+
+.amenity-card p {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* ---------- LOCATION ---------- */
+.location-highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.location-highlights li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.location-highlights li i {
+    margin-right: 10px;
+}
+
+.location-highlights li strong {
+    color: #fff;
+}
+
+.location-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.location-badge i {
+    color: var(--gold);
+}
+
+.map-container {
+    border: 3px solid rgba(201, 168, 76, 0.3);
+}
+
+/* ---------- CONTACT ---------- */
+.contact-form-card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 2.25rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.contact-form-card .form-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 0.35rem;
+}
+
+.contact-form-card .form-control,
+.contact-form-card .form-select {
+    border-radius: var(--radius-sm);
+    border: 1.5px solid #e0dcd4;
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    background-color: #faf9f6;
+}
+
+.contact-form-card .form-control:focus,
+.contact-form-card .form-select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 0.2rem rgba(201, 168, 76, 0.15);
+    background-color: #fff;
+}
+
+.contact-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.contact-icon {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.12), rgba(201, 168, 76, 0.05));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-dark);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.contact-info-item strong {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 2px;
+}
+
+.contact-info-item p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    background: var(--dark) !important;
+}
+
+.footer-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.6);
+    transition: var(--transition);
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.footer-social:hover {
+    background: var(--gold);
+    color: #1a1a1a;
+    transform: translateY(-3px);
+}
+
+.footer-links {
+    font-size: 0.88rem;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--gold);
+}
+
+.footer-links i {
+    margin-right: 6px;
+    font-size: 0.82rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 991.98px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-section {
+        text-align: center;
+    }
+    
+    .hero-subtitle {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .d-flex.flex-wrap {
+        justify-content: center;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .py-section {
+        padding: 3.5rem 0;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-stats {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+    
+    .stat-divider {
+        display: none;
+    }
+    
+    .promo-banner {
+        font-size: 0.8rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .apartment-image {
+        min-height: 220px;
+        padding: 1rem;
+    }
+    
+    .apartment-image img {
+        max-height: 180px;
+    }
+    
+    .contact-form-card {
+        padding: 1.5rem;
+    }
+}
