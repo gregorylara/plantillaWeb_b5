@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./css/style.css">
 
 </head>
@@ -84,13 +85,13 @@
                         <a class="nav-link" href="./html/servicios.html">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./html/sobre.html">Sobre</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="./html/portafolio.html">Portafolio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./html/contacto.html">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./html/acerca.html">Acerca de</a>
                     </li>
                 </ul>
             </div>
@@ -101,48 +102,338 @@
 
 
 <!-- MAIN -->
-    <main>
+<main class="fondo">
 
-        <div class="col-md-12">
-            <img id="portada" class="img-fluid" src="./img/gcDesign2.png" alt="gcDesignStudio">
-        </div>
-        
-        <section id="cards" class="container fondo">
-            <div class="row g-4 justify-content-center">
-                <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
-                    <div class="card">
-                        <img src="./img/seo1.jpg" class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">SEO</h5>
-                            <h6 class="card-subtitle mb-2">Search Engine Optimization</h6>
-                            <p class="card-text">Posicionamiento en buscadores</p>
+    <!-- HERO -->
+    <section class="container py-5 text-center">
+        <h1 class="display-3 fw-bold mb-3"><span class="gradient-text">Impulsa tu negocio</span> al siguiente nivel</h1>
+        <p class="lead text-white-50 mx-auto text-narrow-lg">Desarrollo web, móvil y marketing digital con tecnología de vanguardia. Elige el plan que mejor se adapte a tu proyecto y empieza hoy.</p>
+    </section>
+
+    <!-- PRICING CARDS -->
+    <section class="container pb-5">
+        <div class="row g-4 align-items-stretch">
+
+            <!-- STARTER -->
+            <div class="col-lg-4">
+                <div class="card card-full h-100 text-center">
+                    <div class="card-body p-4 p-lg-5 d-flex flex-column">
+                        <div class="mb-3"><i class="bi bi-rocket-takeoff icon-lg gradient-text"></i></div>
+                        <h3 class="fw-bold text-white mb-1">Starter</h3>
+                        <p class="text-white-50 small mb-4">Landing page profesional para empezar</p>
+                        <div class="mb-4">
+                            <span class="text-white-50 text-decoration-line-through small">€149</span>
+                            <div class="display-4 fw-bold gradient-text">€99</div>
+                            <span class="text-white-50 small">pago único</span>
                         </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
-                    <div class="card">
-                        <img src="./img/redes.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Redes Sociales</h5>
-                            <h6 class="card-subtitle mb-2">Obten mas seguidores</h6>
-                            <p class="card-text">Planes de marketing para redes sociales.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
-                    <div class="card">
-                        <img src="./img/ventas.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Aumenta tus ventas</h5>
-                            <h6 class="card-subtitle mb-2">Cambia tus metodos y genera mas ventas</h6>
-                            <p class="card-text">Planes de marketing para aumentar tus ventas.</p>
+                        <hr class="border-secondary opacity-25">
+                        <ul class="list-unstyled text-start text-white-50 mb-4 flex-grow-1">
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> Landing page 1 página</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> Diseño responsivo</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> SEO base incluido</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> Formulario de contacto</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> Entrega en 1–2 semanas</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> 1 revisión de diseño</li>
+                            <li class="mb-2 text-white-50 opacity-50"><i class="bi bi-x text-secondary"></i> Panel de administración</li>
+                            <li class="mb-2 text-white-50 opacity-50"><i class="bi bi-x text-secondary"></i> E-commerce</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <p class="small text-white-50 mb-2"><i class="bi bi-clock"></i> Entrega: 1–2 semanas</p>
+                            <a href="./html/contacto.html" class="btn btn-outline-light w-100 fw-bold py-2">Empezar Ahora</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-    </main>
+            <!-- PROFESSIONAL (destacado) -->
+            <div class="col-lg-4">
+                <div class="card card-full h-100 text-center pricing-featured">
+                    <span class="pricing-ribbon">Más popular</span>
+                    <div class="card-body p-4 p-lg-5 d-flex flex-column">
+                        <div class="mb-3"><i class="bi bi-building icon-lg gradient-text"></i></div>
+                        <h3 class="fw-bold text-white mb-1">Professional</h3>
+                        <p class="text-white-50 small mb-4">Web corporativa completa</p>
+                        <div class="mb-4">
+                            <span class="text-white-50 text-decoration-line-through small">€449</span>
+                            <div class="display-4 fw-bold gradient-text">€299</div>
+                            <span class="text-white-50 small">pago único</span>
+                        </div>
+                        <hr class="border-secondary opacity-25">
+                        <ul class="list-unstyled text-start text-white-50 mb-4 flex-grow-1">
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> Hasta 5 páginas</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> Diseño responsivo premium</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> SEO avanzado</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> Panel CMS administrable</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> Blog integrado</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> Entrega en 3–5 semanas</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> 3 revisiones de diseño</li>
+                            <li class="mb-2 text-white-50 opacity-50"><i class="bi bi-x text-secondary"></i> E-commerce</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <p class="small text-white-50 mb-2"><i class="bi bi-clock"></i> Entrega: 3–5 semanas</p>
+                            <a href="./html/contacto.html" class="btn btn-gradient w-100 fw-bold py-2">Elegir este Plan</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ENTERPRISE -->
+            <div class="col-lg-4">
+                <div class="card card-full h-100 text-center">
+                    <div class="card-body p-4 p-lg-5 d-flex flex-column">
+                        <div class="mb-3"><i class="bi bi-cart3 icon-lg gradient-text"></i></div>
+                        <h3 class="fw-bold text-white mb-1">Enterprise</h3>
+                        <p class="text-white-50 small mb-4">E-commerce o app web completa</p>
+                        <div class="mb-4">
+                            <span class="text-white-50 text-decoration-line-through small">€899</span>
+                            <div class="display-4 fw-bold gradient-text">€599</div>
+                            <span class="text-white-50 small">pago único</span>
+                        </div>
+                        <hr class="border-secondary opacity-25">
+                        <ul class="list-unstyled text-start text-white-50 mb-4 flex-grow-1">
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> Páginas ilimitadas</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> Tienda online / App web</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> Pasarela de pagos (Stripe)</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> Panel admin avanzado</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> Base de datos + API</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> SEO + Analytics</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> Entrega en 6–10 semanas</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-success"></i> Revisiones ilimitadas</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <p class="small text-white-50 mb-2"><i class="bi bi-clock"></i> Entrega: 6–10 semanas</p>
+                            <a href="./html/contacto.html" class="btn btn-outline-light w-100 fw-bold py-2">Solicitar Cotización</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESGLOSE: STARTER -->
+    <section class="container py-5">
+        <h2 class="text-center fw-bold mb-2"><i class="bi bi-rocket-takeoff"></i> <span class="gradient-text">Plan Starter — Landing Page</span></h2>
+        <p class="text-white-50 text-center mx-auto mb-5 text-narrow">Ideal para profesionales independientes, lanzamientos de productos o campañas de marketing que necesitan una presencia web rápida y efectiva.</p>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card card-full h-100"><div class="card-body p-4">
+                    <h4 class="gradient-text fw-bold mb-3"><i class="bi bi-gear"></i> Metodología</h4>
+                    <ol class="text-white-50">
+                        <li class="mb-2"><strong class="text-white">Briefing</strong> — Reunión inicial para entender tu marca, público y objetivos.</li>
+                        <li class="mb-2"><strong class="text-white">Wireframe</strong> — Estructura visual aprobada antes de diseñar.</li>
+                        <li class="mb-2"><strong class="text-white">Diseño</strong> — Maqueta en Figma con tu identidad visual.</li>
+                        <li class="mb-2"><strong class="text-white">Desarrollo</strong> — Código limpio, semántico y optimizado.</li>
+                        <li class="mb-2"><strong class="text-white">Entrega</strong> — Despliegue en tu dominio + formación básica.</li>
+                    </ol>
+                </div></div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-full h-100"><div class="card-body p-4">
+                    <h4 class="gradient-text fw-bold mb-3"><i class="bi bi-cpu"></i> Tecnologías</h4>
+                    <p class="text-white-50">Utilizamos tecnologías estándar del mercado para asegurar velocidad y compatibilidad:</p>
+                    <div class="d-flex flex-wrap gap-2 mb-3">
+                        <span class="badge bg-secondary px-3 py-2">HTML5</span>
+                        <span class="badge bg-secondary px-3 py-2">CSS3</span>
+                        <span class="badge bg-secondary px-3 py-2">JavaScript</span>
+                        <span class="badge bg-secondary px-3 py-2">Bootstrap 5</span>
+                    </div>
+                    <p class="text-white-50 small"><strong class="text-white">¿Por qué estas tecnologías?</strong> HTML5 + CSS3 garantizan compatibilidad universal. Bootstrap asegura que tu web se vea perfecta en móvil, tablet y escritorio. JavaScript añade interactividad y validación de formularios.</p>
+                    <hr class="border-secondary opacity-25">
+                    <p class="text-white-50 mb-0"><i class="bi bi-clock"></i> <strong class="text-white">Entrega:</strong> 1–2 semanas &nbsp;|&nbsp; <i class="bi bi-arrow-repeat"></i> <strong class="text-white">Revisiones:</strong> 1 incluida</p>
+                </div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESGLOSE: PROFESSIONAL -->
+    <section class="container py-5">
+        <h2 class="text-center fw-bold mb-2"><i class="bi bi-building"></i> <span class="gradient-text">Plan Professional — Web Corporativa</span></h2>
+        <p class="text-white-50 text-center mx-auto mb-5 text-narrow">Para empresas que necesitan una presencia digital completa con múltiples secciones, blog y panel de administración para gestionar su contenido.</p>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card card-full h-100"><div class="card-body p-4">
+                    <h4 class="gradient-text fw-bold mb-3"><i class="bi bi-gear"></i> Metodología</h4>
+                    <ol class="text-white-50">
+                        <li class="mb-2"><strong class="text-white">Discovery</strong> — Análisis de competencia, benchmark y definición de arquitectura de información.</li>
+                        <li class="mb-2"><strong class="text-white">Prototipado</strong> — Wireframes interactivos de todas las páginas en Figma.</li>
+                        <li class="mb-2"><strong class="text-white">Diseño UI</strong> — Diseño visual completo con sistema de componentes reutilizables.</li>
+                        <li class="mb-2"><strong class="text-white">Desarrollo Frontend</strong> — Maquetación responsiva con React o Vue.js + CMS headless.</li>
+                        <li class="mb-2"><strong class="text-white">Testing &amp; QA</strong> — Pruebas en múltiples dispositivos y navegadores.</li>
+                        <li class="mb-2"><strong class="text-white">Despliegue</strong> — Publicación + SEO + Analytics + formación del equipo.</li>
+                    </ol>
+                </div></div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-full h-100"><div class="card-body p-4">
+                    <h4 class="gradient-text fw-bold mb-3"><i class="bi bi-cpu"></i> Tecnologías</h4>
+                    <p class="text-white-50">Stack moderno orientado a rendimiento y mantenibilidad:</p>
+                    <div class="d-flex flex-wrap gap-2 mb-3">
+                        <span class="badge bg-secondary px-3 py-2">React</span>
+                        <span class="badge bg-secondary px-3 py-2">Vue.js</span>
+                        <span class="badge bg-secondary px-3 py-2">Vite</span>
+                        <span class="badge bg-secondary px-3 py-2">Node.js</span>
+                        <span class="badge bg-secondary px-3 py-2">CMS Headless</span>
+                    </div>
+                    <p class="text-white-50 small"><strong class="text-white">¿Por qué?</strong> React/Vue permiten interfaces rápidas y dinámicas. Vite optimiza la velocidad de carga. Un CMS headless te permite editar contenido sin tocar código. Node.js gestiona formularios y el blog.</p>
+                    <hr class="border-secondary opacity-25">
+                    <p class="text-white-50 mb-0"><i class="bi bi-clock"></i> <strong class="text-white">Entrega:</strong> 3–5 semanas &nbsp;|&nbsp; <i class="bi bi-arrow-repeat"></i> <strong class="text-white">Revisiones:</strong> 3 incluidas</p>
+                </div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESGLOSE: ENTERPRISE -->
+    <section class="container py-5">
+        <h2 class="text-center fw-bold mb-2"><i class="bi bi-cart3"></i> <span class="gradient-text">Plan Enterprise — E-commerce / App Web</span></h2>
+        <p class="text-white-50 text-center mx-auto mb-5 text-narrow">Solución completa para venta online o plataformas con usuarios, datos en tiempo real, pasarela de pagos y panel de administración avanzado.</p>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card card-full h-100"><div class="card-body p-4">
+                    <h4 class="gradient-text fw-bold mb-3"><i class="bi bi-gear"></i> Metodología</h4>
+                    <ol class="text-white-50">
+                        <li class="mb-2"><strong class="text-white">Consultoría</strong> — Definición de requisitos funcionales, flujos de usuario y modelo de negocio.</li>
+                        <li class="mb-2"><strong class="text-white">Arquitectura</strong> — Diseño de base de datos, API REST y estructura del proyecto.</li>
+                        <li class="mb-2"><strong class="text-white">Sprint 1: UI/UX</strong> — Prototipo completo con flujos de compra/registro.</li>
+                        <li class="mb-2"><strong class="text-white">Sprint 2: Backend</strong> — API, autenticación, base de datos y pasarela de pagos.</li>
+                        <li class="mb-2"><strong class="text-white">Sprint 3: Frontend</strong> — Integración completa con el backend.</li>
+                        <li class="mb-2"><strong class="text-white">Sprint 4: QA + Lanzamiento</strong> — Testing, optimización y despliegue en producción.</li>
+                    </ol>
+                </div></div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-full h-100"><div class="card-body p-4">
+                    <h4 class="gradient-text fw-bold mb-3"><i class="bi bi-cpu"></i> Tecnologías</h4>
+                    <p class="text-white-50">Full-stack profesional con infraestructura escalable:</p>
+                    <div class="d-flex flex-wrap gap-2 mb-3">
+                        <span class="badge bg-secondary px-3 py-2">Next.js</span>
+                        <span class="badge bg-secondary px-3 py-2">TypeScript</span>
+                        <span class="badge bg-secondary px-3 py-2">NestJS</span>
+                        <span class="badge bg-secondary px-3 py-2">PostgreSQL</span>
+                        <span class="badge bg-secondary px-3 py-2">Stripe</span>
+                        <span class="badge bg-secondary px-3 py-2">Docker</span>
+                        <span class="badge bg-secondary px-3 py-2">AWS</span>
+                    </div>
+                    <p class="text-white-50 small"><strong class="text-white">¿Por qué?</strong> Next.js + TypeScript crean interfaces robustas. NestJS maneja la lógica de negocio con seguridad. PostgreSQL almacena datos estructurados. Stripe procesa pagos. Docker + AWS garantizan escalabilidad.</p>
+                    <hr class="border-secondary opacity-25">
+                    <p class="text-white-50 mb-0"><i class="bi bi-clock"></i> <strong class="text-white">Entrega:</strong> 6–10 semanas &nbsp;|&nbsp; <i class="bi bi-arrow-repeat"></i> <strong class="text-white">Revisiones:</strong> Ilimitadas</p>
+                </div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUESTRO PROCESO -->
+    <section class="container py-5">
+        <h2 class="text-center fw-bold mb-5"><i class="bi bi-diagram-3"></i> <span class="gradient-text">Nuestro Proceso</span></h2>
+        <div class="row g-4 text-center">
+            <div class="col-md-3">
+                <div class="card card-full h-100"><div class="card-body p-4">
+                    <div class="icon-lg gradient-text mb-3">1</div>
+                    <h5 class="text-white fw-bold">Consulta Gratis</h5>
+                    <p class="text-white-50 small mb-0">Hablamos de tu proyecto, objetivos y presupuesto. Sin compromiso.</p>
+                </div></div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-full h-100"><div class="card-body p-4">
+                    <div class="icon-lg gradient-text mb-3">2</div>
+                    <h5 class="text-white fw-bold">Propuesta</h5>
+                    <p class="text-white-50 small mb-0">Recibes un plan detallado con tecnologías, plazos y precio cerrado.</p>
+                </div></div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-full h-100"><div class="card-body p-4">
+                    <div class="icon-lg gradient-text mb-3">3</div>
+                    <h5 class="text-white fw-bold">Desarrollo</h5>
+                    <p class="text-white-50 small mb-0">Trabajamos en sprints con entregas parciales para tu revisión continua.</p>
+                </div></div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-full h-100"><div class="card-body p-4">
+                    <div class="icon-lg gradient-text mb-3">4</div>
+                    <h5 class="text-white fw-bold">Lanzamiento</h5>
+                    <p class="text-white-50 small mb-0">Publicamos, configuramos analytics y te formamos para gestionar tu web.</p>
+                </div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POR QUÉ ELEGIRNOS -->
+    <section class="container py-5">
+        <h2 class="text-center fw-bold mb-5"><i class="bi bi-award"></i> <span class="gradient-text">¿Por Qué Elegirnos?</span></h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card card-full h-100"><div class="card-body p-4 text-center">
+                    <div class="icon-lg mb-3"><i class="bi bi-shield-check gradient-text"></i></div>
+                    <h5 class="text-white fw-bold">Precio Cerrado</h5>
+                    <p class="text-white-50 small mb-0">Sin sorpresas. El precio que ves es el precio que pagas. Sin costes ocultos ni extras inesperados.</p>
+                </div></div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-full h-100"><div class="card-body p-4 text-center">
+                    <div class="icon-lg mb-3"><i class="bi bi-lightning-charge gradient-text"></i></div>
+                    <h5 class="text-white fw-bold">Entrega Garantizada</h5>
+                    <p class="text-white-50 small mb-0">Cumplimos los plazos o te devolvemos tu dinero. Trabajamos con deadlines reales, no promesas vacías.</p>
+                </div></div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-full h-100"><div class="card-body p-4 text-center">
+                    <div class="icon-lg mb-3"><i class="bi bi-code-slash gradient-text"></i></div>
+                    <h5 class="text-white fw-bold">Código Tuyo</h5>
+                    <p class="text-white-50 small mb-0">Todo el código fuente es tuyo. Sin ataduras, sin licencias recurrentes. Tu proyecto, tu propiedad.</p>
+                </div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="container py-5 mb-5">
+        <h2 class="text-center fw-bold mb-5"><i class="bi bi-question-circle"></i> <span class="gradient-text">Preguntas Frecuentes</span></h2>
+        <div class="accordion text-narrow mx-auto" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">¿Puedo cambiar de plan después?</button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-white-50">Sí. Si empiezas con un plan Starter y luego necesitas más funcionalidades, solo pagas la diferencia para subir al siguiente nivel. Tu inversión inicial nunca se pierde.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">¿Qué pasa si no me gusta el diseño?</button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-white-50">Cada plan incluye revisiones de diseño. Te mostramos el diseño antes de empezar a programar, así que siempre apruebas la dirección visual antes de que escribamos una sola línea de código.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">¿Incluye hosting y dominio?</button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-white-50">Te asesoramos en la elección del hosting ideal y configuramos todo por ti. El coste del hosting (desde €5/mes) y dominio (desde €10/año) se paga aparte directamente al proveedor, para que tengas control total.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">¿Ofrecen mantenimiento después del lanzamiento?</button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-white-50">Sí. Ofrecemos planes de mantenimiento mensual opcionales que incluyen actualizaciones de seguridad, backups, monitoreo y soporte técnico prioritario.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="container py-5 text-center mb-5">
+        <div class="card card-full"><div class="card-body p-5">
+            <h2 class="fw-bold mb-3"><span class="gradient-text">¿Listo para empezar?</span></h2>
+            <p class="text-white-50 mx-auto text-narrow mb-4">Agenda una consulta gratuita de 30 minutos. Sin compromiso, sin presión. Analizamos tu proyecto y te recomendamos el plan ideal.</p>
+            <a href="./html/contacto.html" class="btn btn-gradient btn-lg fw-bold px-5 py-3">Agendar Consulta Gratis</a>
+            <p class="text-white-50 small mt-3 mb-0"><i class="bi bi-clock"></i> Respuesta en menos de 24h</p>
+        </div></div>
+    </section>
+
+</main>
 <!-- FIN MAIN -->
 
         <!-- FOOTER -->
