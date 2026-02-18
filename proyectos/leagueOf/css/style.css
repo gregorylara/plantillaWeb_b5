@@ -1,0 +1,862 @@
+/* ===== LEAGUE OF LEGENDS — INFO HUB STYLES ===== */
+
+/* ---------- VARIABLES ---------- */
+:root {
+    --lol-bg: #010a13;
+    --lol-surface: #0a1628;
+    --lol-surface-2: #0f2035;
+    --lol-border: #1e3a5f;
+    --lol-gold: #c8aa6e;
+    --lol-gold-light: #f0e6d2;
+    --lol-gold-dark: #785a28;
+    --lol-blue: #0397ab;
+    --lol-blue-dark: #005a82;
+    --lol-blue-glow: #0ac8b9;
+    --lol-text: #a09b8c;
+    --lol-text-light: #f0e6d2;
+    --lol-red: #c34040;
+    --lol-card: #091428;
+    --radius: 8px;
+    --radius-lg: 16px;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    --shadow-gold: 0 0 20px rgba(200, 170, 110, 0.15);
+    --transition: all 0.3s ease;
+}
+
+/* ---------- BASE ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--lol-bg);
+    color: var(--lol-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Beaufort for LOL', 'Cinzel', serif;
+    color: var(--lol-gold-light);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+a {
+    color: var(--lol-blue-glow);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--lol-gold);
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--lol-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--lol-gold-dark);
+    border-radius: 3px;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+    padding: 0.75rem 0;
+    background: rgba(1, 10, 19, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(200, 170, 110, 0.1);
+    z-index: 1050;
+    transition: var(--transition);
+}
+
+.navbar.scrolled {
+    background: rgba(1, 10, 19, 0.98);
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.6);
+}
+
+.navbar-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--lol-gold) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-brand img {
+    height: 32px;
+}
+
+.navbar .nav-link {
+    color: var(--lol-text) !important;
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.5rem 1rem !important;
+    transition: var(--transition);
+    position: relative;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--lol-gold) !important;
+}
+
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--lol-gold);
+    transition: var(--transition);
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+    width: 60%;
+}
+
+.navbar-toggler {
+    border-color: rgba(200, 170, 110, 0.3);
+}
+
+.navbar-toggler-icon {
+    filter: brightness(10);
+}
+
+.navbar-collapse {
+    background: rgba(9, 20, 40, 0.98);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border: 1px solid rgba(200, 170, 110, 0.1);
+}
+
+@media (min-width: 992px) {
+    .navbar-collapse {
+        background: transparent;
+        backdrop-filter: none;
+        padding: 0;
+        margin-top: 0;
+        border: none;
+    }
+}
+
+/* ---------- HERO ---------- */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--lol-bg);
+    padding-top: 80px;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(ellipse at 70% 30%, rgba(10, 200, 185, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 30% 60%, rgba(200, 170, 110, 0.06) 0%, transparent 50%),
+        linear-gradient(180deg, var(--lol-bg) 0%, var(--lol-surface) 100%);
+    z-index: 0;
+}
+
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><polygon fill="none" stroke="rgba(200,170,110,0.03)" stroke-width="0.5" points="100,10 190,60 190,140 100,190 10,140 10,60"/></svg>');
+    background-size: 200px 200px;
+    opacity: 0.5;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-patch-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(200, 170, 110, 0.1);
+    border: 1px solid rgba(200, 170, 110, 0.25);
+    color: var(--lol-gold);
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 800;
+    color: var(--lol-gold-light);
+    line-height: 1;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 40px rgba(200, 170, 110, 0.2);
+}
+
+.hero-title span {
+    color: var(--lol-gold);
+    display: block;
+    font-size: 0.5em;
+    letter-spacing: 0.2em;
+    margin-top: 0.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--lol-text);
+    max-width: 550px;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.hero-stat-value {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--lol-gold);
+    display: block;
+}
+
+.hero-stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--lol-text);
+    opacity: 0.6;
+}
+
+.hero-featured-splash {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), var(--shadow-gold);
+    border: 1px solid rgba(200, 170, 110, 0.15);
+}
+
+.hero-featured-splash img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+    transition: transform 8s ease;
+}
+
+.hero-featured-splash:hover img {
+    transform: scale(1.05);
+}
+
+.hero-featured-splash .splash-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(1, 10, 19, 0.95), transparent);
+}
+
+.splash-champion-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--lol-gold-light);
+    text-transform: uppercase;
+}
+
+.splash-champion-title {
+    font-size: 0.85rem;
+    color: var(--lol-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+/* ---------- SECTION COMMON ---------- */
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--lol-blue-glow);
+    margin-bottom: 0.75rem;
+}
+
+.section-tag i {
+    font-size: 0.9rem;
+}
+
+.section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--lol-gold-light);
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    color: var(--lol-text);
+    font-size: 1rem;
+    opacity: 0.7;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.py-section {
+    padding: 5rem 0;
+}
+
+/* ---------- DECORATIVE LINE ---------- */
+.hex-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 3rem 0;
+}
+
+.hex-divider::before,
+.hex-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200, 170, 110, 0.3), transparent);
+}
+
+.hex-divider i {
+    color: var(--lol-gold-dark);
+    font-size: 0.8rem;
+}
+
+/* ---------- FREE ROTATION ---------- */
+.rotation-section {
+    background: var(--lol-surface);
+    border-top: 1px solid rgba(200, 170, 110, 0.08);
+    border-bottom: 1px solid rgba(200, 170, 110, 0.08);
+}
+
+.rotation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1rem;
+    justify-items: center;
+}
+
+.rotation-card {
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.rotation-card:hover {
+    transform: translateY(-5px);
+}
+
+.rotation-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--lol-border);
+    object-fit: cover;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+.rotation-card:hover img {
+    border-color: var(--lol-gold);
+    box-shadow: 0 0 15px rgba(200, 170, 110, 0.3);
+}
+
+.rotation-card .champ-name {
+    display: block;
+    font-size: 0.7rem;
+    margin-top: 6px;
+    color: var(--lol-text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+}
+
+.rotation-card:hover .champ-name {
+    color: var(--lol-gold-light);
+}
+
+/* ---------- CHAMPIONS GALLERY ---------- */
+.champions-section {
+    background: var(--lol-bg);
+}
+
+.search-bar {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto 1.5rem;
+}
+
+.search-bar input {
+    width: 100%;
+    background: var(--lol-surface);
+    border: 1px solid var(--lol-border);
+    color: var(--lol-text-light);
+    padding: 12px 20px 12px 48px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    outline: none;
+}
+
+.search-bar input::placeholder {
+    color: rgba(160, 155, 140, 0.5);
+}
+
+.search-bar input:focus {
+    border-color: var(--lol-gold);
+    box-shadow: 0 0 0 3px rgba(200, 170, 110, 0.1);
+}
+
+.search-bar i {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--lol-text);
+    font-size: 1rem;
+}
+
+.role-filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.role-btn {
+    background: var(--lol-surface);
+    border: 1px solid var(--lol-border);
+    color: var(--lol-text);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.role-btn:hover,
+.role-btn.active {
+    background: rgba(200, 170, 110, 0.15);
+    border-color: var(--lol-gold);
+    color: var(--lol-gold);
+}
+
+.champion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+}
+
+.champion-card {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid rgba(30, 58, 95, 0.5);
+    background: var(--lol-card);
+}
+
+.champion-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--lol-gold);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(200, 170, 110, 0.1);
+}
+
+.champion-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.champion-card:hover img {
+    transform: scale(1.1);
+}
+
+.champion-card .card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;
+    background: linear-gradient(to top, rgba(1, 10, 19, 0.95), rgba(1, 10, 19, 0.6), transparent);
+    text-align: center;
+}
+
+.champion-card .card-info .name {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--lol-gold-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.champion-card .card-info .title {
+    display: block;
+    font-size: 0.6rem;
+    color: var(--lol-text);
+    text-transform: capitalize;
+    opacity: 0.7;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: var(--lol-text);
+    font-size: 1.1rem;
+}
+
+/* ---------- LEADERBOARD ---------- */
+.leaderboard-section {
+    background: var(--lol-surface);
+    border-top: 1px solid rgba(200, 170, 110, 0.08);
+    border-bottom: 1px solid rgba(200, 170, 110, 0.08);
+}
+
+.region-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.region-tab {
+    background: var(--lol-card);
+    border: 1px solid var(--lol-border);
+    color: var(--lol-text);
+    padding: 8px 18px;
+    border-radius: var(--radius);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.region-tab:hover,
+.region-tab.active {
+    background: rgba(200, 170, 110, 0.12);
+    border-color: var(--lol-gold);
+    color: var(--lol-gold);
+}
+
+.leaderboard-table {
+    background: var(--lol-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--lol-border);
+}
+
+.leaderboard-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.leaderboard-table thead th {
+    background: rgba(200, 170, 110, 0.08);
+    color: var(--lol-gold);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--lol-border);
+}
+
+.leaderboard-table tbody tr {
+    border-bottom: 1px solid rgba(30, 58, 95, 0.3);
+    transition: var(--transition);
+}
+
+.leaderboard-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.leaderboard-table tbody tr:hover {
+    background: rgba(200, 170, 110, 0.04);
+}
+
+.leaderboard-table td {
+    padding: 12px 16px;
+    font-size: 0.88rem;
+    vertical-align: middle;
+}
+
+.rank-number {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--lol-text);
+    min-width: 30px;
+    display: inline-block;
+    text-align: center;
+}
+
+.rank-1 { color: #ffd700; text-shadow: 0 0 10px rgba(255, 215, 0, 0.4); }
+.rank-2 { color: #c0c0c0; text-shadow: 0 0 10px rgba(192, 192, 192, 0.3); }
+.rank-3 { color: #cd7f32; text-shadow: 0 0 10px rgba(205, 127, 50, 0.3); }
+
+.summoner-name {
+    color: var(--lol-gold-light);
+    font-weight: 600;
+}
+
+.lp-value {
+    color: var(--lol-blue-glow);
+    font-weight: 700;
+}
+
+.win-rate {
+    font-weight: 600;
+}
+
+.win-rate.high { color: #2dce89; }
+.win-rate.medium { color: var(--lol-gold); }
+.win-rate.low { color: var(--lol-red); }
+
+/* ---------- PATCH INFO ---------- */
+.patch-section {
+    background: var(--lol-bg);
+}
+
+.patch-card {
+    background: var(--lol-card);
+    border: 1px solid var(--lol-border);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    text-align: center;
+    transition: var(--transition);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.patch-card:hover {
+    border-color: var(--lol-gold-dark);
+    box-shadow: var(--shadow-gold);
+}
+
+.patch-version {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--lol-gold);
+    margin-bottom: 0.5rem;
+}
+
+.patch-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--lol-text);
+    opacity: 0.6;
+    margin-bottom: 1.5rem;
+}
+
+.patch-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(200, 170, 110, 0.1);
+    border: 1px solid rgba(200, 170, 110, 0.3);
+    color: var(--lol-gold);
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: var(--transition);
+}
+
+.patch-link:hover {
+    background: rgba(200, 170, 110, 0.2);
+    color: var(--lol-gold-light);
+    transform: translateY(-2px);
+}
+
+/* ---------- FOOTER ---------- */
+.lol-footer {
+    background: #000;
+    border-top: 1px solid rgba(200, 170, 110, 0.1);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.lol-footer p {
+    color: var(--lol-text);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin: 0;
+    line-height: 1.8;
+}
+
+.lol-footer a {
+    color: var(--lol-gold-dark);
+}
+
+/* ---------- LOADING SKELETON ---------- */
+.skeleton {
+    background: linear-gradient(90deg, var(--lol-surface) 25%, var(--lol-surface-2) 50%, var(--lol-surface) 75%);
+    background-size: 400% 100%;
+    animation: skeleton-shimmer 1.5s ease-in-out infinite;
+    border-radius: var(--radius);
+}
+
+@keyframes skeleton-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.skeleton-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.skeleton-card {
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+.skeleton-row {
+    height: 50px;
+    margin-bottom: 4px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 991.98px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-section {
+        text-align: center;
+    }
+
+    .hero-subtitle {
+        margin: 0 auto 2rem;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .hero-featured-splash img {
+        height: 300px;
+    }
+
+    .champion-grid {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-stats {
+        gap: 1.5rem;
+    }
+
+    .hero-stat-value {
+        font-size: 1.5rem;
+    }
+
+    .hero-featured-splash img {
+        height: 250px;
+    }
+
+    .rotation-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 0.75rem;
+    }
+
+    .rotation-card img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .champion-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+
+    .leaderboard-table td,
+    .leaderboard-table thead th {
+        padding: 10px 8px;
+        font-size: 0.78rem;
+    }
+
+    .py-section {
+        padding: 3rem 0;
+    }
+
+    .patch-version {
+        font-size: 2rem;
+    }
+}
