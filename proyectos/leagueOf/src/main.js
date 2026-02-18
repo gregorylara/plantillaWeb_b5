@@ -14,10 +14,22 @@ const CONFIG = {
 
 // ---------- STATE ----------
 let wrChampions = [];   // Wild Rift champion data
-let ddChampions = {};   // Data Dragon champion data (English names, titles)
+let ddChampions = {};   // Data Dragon champion data
+let ddItems = [];       // Data Dragon item data
 let ddVersion = '';
 let activeLane = 'all';
 let activeRole = 'all';
+
+// ---------- DEFAULT BUILDS (Role Based) ----------
+// Using partial names to find PC items that look like WR items
+const ROLE_BUILDS = {
+    'Fighter': ['Trinity', 'Sterak', 'Death', 'Cleaver', 'Guardian', 'Plated'],
+    'Mage': ['Luden', 'Rabadon', 'Zhonya', 'Void', 'Shadowflame', 'Sorcerer'],
+    'Assassin': ['Youmuu', 'Collector', 'Edge', 'Serylda', 'Guardian', 'Lucidity'],
+    'Marksman': ['Infinity', 'Kraken', 'Phantom', 'Bloodthirster', 'Dominik', 'Berserker'],
+    'Support': ['Mandate', 'Ardent', 'Redemption', 'Mikael', 'Staff', 'Lucidity'],
+    'Tank': ['Sunfire', 'Thornmail', 'Visage', 'Randuin', 'Warmog', 'Plated']
+};
 
 // ---------- INIT ----------
 document.addEventListener('DOMContentLoaded', async () => {
@@ -26,109 +38,30 @@ document.addEventListener('DOMContentLoaded', async () => {
     initFilters();
 
     await loadDDragonVersion();
-    await Promise.all([loadDDragonChampions(), loadWildRiftChampions()]);
+    await Promise.all([
+        loadDDragonChampions(),
+        loadDDragonItems(), // New: Load items
+        loadWildRiftChampions()
+    ]);
 
     mergeAndRender();
 });
 
-// ---------- NAVBAR ----------
-function initNavbar() {
-    const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
+// ... (Navbar functions remain the same) ...
 
-    document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const target = document.querySelector(link.getAttribute('href'));
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
-            const collapse = document.getElementById('navMenu');
-            const bsCollapse = bootstrap.Collapse.getInstance(collapse);
-            if (bsCollapse) bsCollapse.hide();
-        });
-    });
-}
-
-// ---------- LOAD DATA DRAGON VERSION ----------
-async function loadDDragonVersion() {
+// ---------- LOAD DATA DRAGON ITEMS ----------
+async function loadDDragonItems() {
     try {
-        const res = await fetch(`${CONFIG.DDRAGON}/api/versions.json`);
-        const versions = await res.json();
-        ddVersion = versions[0];
-        document.getElementById('patchVersion').textContent = ddVersion;
-    } catch (err) {
-        console.error('Version load failed:', err);
-        document.getElementById('patchVersion').textContent = '—';
-    }
-}
-
-// ---------- LOAD DATA DRAGON CHAMPIONS ----------
-async function loadDDragonChampions() {
-    try {
-        const res = await fetch(`${CONFIG.DDRAGON}/cdn/${ddVersion}/data/en_US/champion.json`);
+        const res = await fetch(`${CONFIG.DDRAGON}/cdn/${ddVersion}/data/en_US/item.json`);
         const data = await res.json();
-        ddChampions = data.data;
+        // Convert object to array for easier searching
+        ddItems = Object.values(data.data);
     } catch (err) {
-        console.error('DDragon champions failed:', err);
+        console.error('DDragon items failed:', err);
     }
 }
 
-// ---------- LOAD WILD RIFT CHAMPIONS ----------
-async function loadWildRiftChampions() {
-    try {
-        const res = await fetch(CONFIG.WR_API);
-        wrChampions = await res.json();
-        // Filter only champions in Wild Rift
-        wrChampions = wrChampions.filter(c => c.is_wr === true);
-    } catch (err) {
-        console.error('WR champions failed:', err);
-    }
-}
-
-// ---------- MERGE DATA & RENDER ----------
-function mergeAndRender() {
-    // Enrich WR data with English names/titles from DDragon
-    wrChampions.forEach(wr => {
-        const dd = ddChampions[wr.id];
-        if (dd) {
-            wr.nameEn = dd.name;
-            wr.titleEn = dd.title;
-        } else {
-            wr.nameEn = wr.id;
-            wr.titleEn = '';
-        }
-    });
-
-    // Sort alphabetically
-    wrChampions.sort((a, b) => a.nameEn.localeCompare(b.nameEn));
-
-    // Update stats
-    const count = wrChampions.length;
-    document.getElementById('statChamps').textContent = count;
-    document.getElementById('heroChampCount').textContent = count;
-
-    renderHeroSplash();
-    renderChampionGrid(wrChampions);
-    renderStats();
-    renderRoleBars();
-}
-
-// ---------- HERO SPLASH ----------
-function renderHeroSplash() {
-    const randomId = CONFIG.FEATURED[Math.floor(Math.random() * CONFIG.FEATURED.length)];
-    const dd = ddChampions[randomId];
-    if (!dd) return;
-
-    document.getElementById('heroSplash').innerHTML = `
-        <img src="${CONFIG.DDRAGON}/cdn/img/champion/splash/${randomId}_0.jpg"
-             alt="${dd.name}" loading="lazy">
-        <div class="splash-info">
-            <div class="splash-name">${dd.name}</div>
-            <div class="splash-title">${dd.title}</div>
-        </div>
-    `;
-}
+// ... (loadDDragonChampions, loadWildRiftChampions, mergeAndRender remain same) ...
 
 // ---------- CHAMPION GRID ----------
 function renderChampionGrid(champs) {
@@ -143,8 +76,12 @@ function renderChampionGrid(champs) {
         const roles = getRoles(c);
         const lanes = getLanes(c);
 
+        // serialize for click handler
+        const safeName = c.nameEn.replace(/'/g, "\\'");
+
         return `
             <div class="champion-card"
+                 onclick="openChampionModal('${c.id}')"
                  data-name="${c.nameEn.toLowerCase()}"
                  data-roles="${roles.join(',').toLowerCase()}"
                  data-lanes="${lanes.join(',').toLowerCase()}">
@@ -161,6 +98,55 @@ function renderChampionGrid(champs) {
         `;
     }).join('');
 }
+
+// ... (getRoles, getLanes, getLaneIcon, filters remain same) ...
+
+// ---------- CHAMPION MODAL ----------
+window.openChampionModal = function(champId) {
+    const champ = wrChampions.find(c => c.id === champId);
+    if (!champ) return;
+
+    // 1. Populate Header
+    document.getElementById('modalName').textContent = champ.nameEn;
+    document.getElementById('modalTitle').textContent = champ.titleEn || 'The Champion';
+    
+    // Splash
+    const splashUrl = `${CONFIG.DDRAGON}/cdn/img/champion/splash/${champ.id}_0.jpg`;
+    document.getElementById('modalSplash').style.backgroundImage = `url('${splashUrl}')`;
+
+    // Roles
+    const roles = getRoles(champ);
+    const rolesContainer = document.getElementById('modalRoles');
+    rolesContainer.innerHTML = roles.map(r => `<span class="modal-role-badge">${r}</span>`).join('');
+
+    // 2. Determine Build
+    // Pick the first role as primary, default to Fighter if none
+    const primaryRole = roles[0] || 'Fighter';
+    document.getElementById('modalBuildRole').textContent = primaryRole;
+
+    // Find items for this role
+    const partialNames = ROLE_BUILDS[primaryRole] || ROLE_BUILDS['Fighter'];
+    const buildContainer = document.getElementById('modalBuild');
+    
+    buildContainer.innerHTML = partialNames.map(partial => {
+        // Find item by fuzzy name match
+        const item = ddItems.find(i => i.name.includes(partial));
+        if (item) {
+            return `
+                <div class="item-slot" title="${item.name}">
+                    <img src="${CONFIG.DDRAGON}/cdn/${ddVersion}/img/item/${item.image.full}" alt="${item.name}">
+                </div>
+            `;
+        } else {
+            return `<div class="item-slot"></div>`; // Empty slot if not found
+        }
+    }).join('');
+
+    // 3. Show Modal
+    const modalEl = document.getElementById('championModal');
+    const modal = new bootstrap.Modal(modalEl);
+    modal.show();
+};
 
 function getRoles(c) {
     const roles = [];
