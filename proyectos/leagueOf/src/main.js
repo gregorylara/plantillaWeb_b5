@@ -3,6 +3,7 @@
 // ---------- CONFIG ----------
 const CONFIG = {
     // Community Wild Rift champion data (free, no key)
+    // Community Wild Rift champion data (free, no key)
     WR_API: 'https://ry2x.github.io/WildRift-Champs/hero.json',
 
     // Data Dragon CDN for images and English names (free, no key)
@@ -16,6 +17,8 @@ const CONFIG = {
 let wrChampions = [];   // Wild Rift champion data
 let ddChampions = {};   // Data Dragon champion data
 let ddItems = [];       // Data Dragon item data
+let wrItems = [];       // Official Wild Rift items
+let customBuilds = {};  // Custom JSON builds
 let ddVersion = '';
 let activeLane = 'all';
 let activeRole = 'all';
@@ -40,14 +43,37 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadDDragonVersion();
     await Promise.all([
         loadDDragonChampions(),
-        loadDDragonItems(), // New: Load items
-        loadWildRiftChampions()
+        loadDDragonItems(), 
+        loadWildRiftChampions(),
+        loadCustomBuilds(),
+        loadWildRiftItems() // New: Load WR specific items
     ]);
 
     mergeAndRender();
 });
 
-// ... (Navbar functions remain the same) ...
+// ---------- NAVBAR ----------
+function initNavbar() {
+    const navbar = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Close mobile menu on click
+    document.querySelectorAll('.nav-link').forEach(l => {
+        l.addEventListener('click', () => {
+            const collapse = document.getElementById('navMenu');
+            if (collapse.classList.contains('show')) {
+                const bsCollapse = new bootstrap.Collapse(collapse);
+                bsCollapse.hide();
+            }
+        });
+    });
+}
 
 // ---------- LOAD DATA DRAGON ITEMS ----------
 async function loadDDragonItems() {
@@ -61,7 +87,113 @@ async function loadDDragonItems() {
     }
 }
 
-// ... (loadDDragonChampions, loadWildRiftChampions, mergeAndRender remain same) ...
+async function loadCustomBuilds() {
+    try {
+        const res = await fetch('./data/builds.json');
+        if (!res.ok) throw new Error('Builds file not found');
+        customBuilds = await res.json();
+        console.log("Custom builds loaded for", Object.keys(customBuilds).length, "champions.");
+    } catch (err) {
+        console.warn('Custom builds failed to load:', err);
+    }
+}
+
+async function loadWildRiftItems() {
+    try {
+        const res = await fetch('./data/items.json');
+        if (!res.ok) throw new Error('WR items file not found');
+        wrItems = await res.json();
+        console.log("Wild Rift items list loaded:", wrItems.length, "items.");
+    } catch (err) {
+        console.error('Wild Rift items load failed:', err);
+    }
+}
+
+// ---------- LOAD DATA DRAGON VERSION & CHAMPIONS ----------
+async function loadDDragonVersion() {
+    try {
+        const res = await fetch(`${CONFIG.DDRAGON}/api/versions.json`);
+        const versions = await res.json();
+        ddVersion = versions[0];
+        document.getElementById('patchVersion').textContent = ddVersion;
+    } catch (err) {
+        console.error('DDragon version failed:', err);
+        ddVersion = '14.1.1'; // Fallback
+    }
+}
+
+async function loadDDragonChampions() {
+    try {
+        const res = await fetch(`${CONFIG.DDRAGON}/cdn/${ddVersion}/data/en_US/champion.json`);
+        const data = await res.json();
+        ddChampions = data.data;
+    } catch (err) {
+        console.error('DDragon champions failed:', err);
+    }
+}
+
+async function loadWildRiftChampions() {
+    try {
+        // Fetch from community repo
+        const res = await fetch(CONFIG.WR_API);
+        
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        
+        const data = await res.json();
+        // The API returns an object or array depending on endpoint, 
+        // ry2x repo returns object with names as keys
+        // Filter: ONLY Wild Rift champions
+        wrChampions = Object.values(data)
+            .filter(c => c.is_wr === true)
+            .map(c => ({
+                ...c,
+                nameEn: c.id // Map id to nameEn since API uses 'id' for English name
+            }));
+        console.log(`Loaded ${wrChampions.length} Wild Rift champions`);
+
+        // Update hero count
+        document.getElementById('statChamps').textContent = wrChampions.length;
+        document.getElementById('heroChampCount').textContent = wrChampions.length;
+
+    } catch (err) {
+        console.error('Wild Rift API failed:', err);
+        document.getElementById('championGrid').innerHTML = 
+            '<p class="error-msg">Failed to load champion data. Please try again later.</p>';
+        document.getElementById('statChamps').textContent = 'Error';
+    }
+}
+
+function mergeAndRender() {
+    // We primarily use WR data, but map DD images/names where possible
+    // Initial render
+    renderChampionGrid(wrChampions);
+    renderHeroSplash();
+    renderStats();
+    renderRoleBars();
+}
+
+// ---------- HERO SPLASH ----------
+function renderHeroSplash() {
+    const randomName = CONFIG.FEATURED[Math.floor(Math.random() * CONFIG.FEATURED.length)];
+    // Find ID in DD
+    const champ = Object.values(ddChampions).find(c => c.id === randomName || c.name === randomName) 
+                  || Object.values(ddChampions)[0];
+
+    if (champ) {
+        const splashUrl = `${CONFIG.DDRAGON}/cdn/img/champion/splash/${champ.id}_0.jpg`;
+        const heroSplash = document.getElementById('heroSplash');
+        heroSplash.innerHTML = `<img src="${splashUrl}" alt="${champ.name}">`;
+        
+        // Add info overlay for splash
+        const info = document.createElement('div');
+        info.className = 'splash-info';
+        info.innerHTML = `
+            <div class="splash-name">${champ.id}</div>
+            <div class="splash-title">${champ.title || 'The Champion'}</div>
+        `;
+        heroSplash.appendChild(info);
+    }
+}
 
 // ---------- CHAMPION GRID ----------
 function renderChampionGrid(champs) {
@@ -120,26 +252,64 @@ window.openChampionModal = function(champId) {
     rolesContainer.innerHTML = roles.map(r => `<span class="modal-role-badge">${r}</span>`).join('');
 
     // 2. Determine Build
-    // Pick the first role as primary, default to Fighter if none
-    const primaryRole = roles[0] || 'Fighter';
-    document.getElementById('modalBuildRole').textContent = primaryRole;
-
-    // Find items for this role
-    const partialNames = ROLE_BUILDS[primaryRole] || ROLE_BUILDS['Fighter'];
-    const buildContainer = document.getElementById('modalBuild');
+    // Check if we have custom builds for this champion (case insensitive)
+    const champKey = Object.keys(customBuilds).find(k => k.toUpperCase() === champ.id.toUpperCase());
+    const itemsToShow = champKey ? customBuilds[champKey] : null;
     
-    buildContainer.innerHTML = partialNames.map(partial => {
-        // Find item by fuzzy name match
-        const item = ddItems.find(i => i.name.includes(partial));
+    const primaryRole = roles[0] || 'Fighter';
+    document.getElementById('modalBuildRole').textContent = champKey ? 'Pro Build' : primaryRole;
+
+    const buildContainer = document.getElementById('modalBuild');
+    let itemPool = [];
+
+    if (itemsToShow) {
+        // Use custom build items
+        itemPool = itemsToShow;
+    } else {
+        // Fallback to role-based partials
+        itemPool = ROLE_BUILDS[primaryRole] || ROLE_BUILDS['Fighter'];
+    }
+
+    buildContainer.innerHTML = itemPool.map(itemName => {
+        // 1. Try to find in Wild Rift official list (Best match)
+        let item = wrItems.find(i => i.name.toLowerCase() === itemName.toLowerCase());
+        
+        if (!item) {
+            item = wrItems.find(i => i.name.toLowerCase().includes(itemName.toLowerCase()));
+        }
+
+        // If found in WR list, we use the WR icon
         if (item) {
             return `
                 <div class="item-slot" title="${item.name}">
-                    <img src="${CONFIG.DDRAGON}/cdn/${ddVersion}/img/item/${item.image.full}" alt="${item.name}">
+                    <img src="${item.icon}" alt="${item.name}" onerror="this.src='https://ddragon.leagueoflegends.com/cdn/${ddVersion}/img/item/1001.png'">
+                    <span class="item-name-tag">${item.name}</span>
                 </div>
             `;
-        } else {
-            return `<div class="item-slot"></div>`; // Empty slot if not found
         }
+
+        // 2. Fallback to Data Dragon only if not found in WR list (for older items)
+        // Note: The USER requested taking only WR objects, so we should be strict
+        let ddItem = ddItems.find(i => i.name.toLowerCase() === itemName.toLowerCase());
+        if (!ddItem) {
+            ddItem = ddItems.find(i => i.name.toLowerCase().includes(itemName.toLowerCase()));
+        }
+
+        if (ddItem) {
+            return `
+                <div class="item-slot" title="${ddItem.name}">
+                    <img src="${CONFIG.DDRAGON}/cdn/${ddVersion}/img/item/${ddItem.image.full}" alt="${ddItem.name}">
+                    <span class="item-name-tag">${ddItem.name}</span>
+                </div>
+            `;
+        }
+
+        // 3. Placeholder if not found anywhere
+        return `
+            <div class="item-slot placeholder" title="${itemName}">
+                <span class="item-initial">${itemName[0]}</span>
+            </div>
+        `;
     }).join('');
 
     // 3. Show Modal

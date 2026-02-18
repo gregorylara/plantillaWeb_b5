@@ -101,23 +101,23 @@
 
         <!-- Lane Filters -->
         <div class="filter-bar" id="laneFilters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="top"><i class="bi bi-shield-fill"></i> Baron</button>
-            <button class="filter-btn" data-filter="jg"><i class="bi bi-tree-fill"></i> Jungle</button>
-            <button class="filter-btn" data-filter="mid"><i class="bi bi-lightning-fill"></i> Mid</button>
-            <button class="filter-btn" data-filter="ad"><i class="bi bi-crosshair"></i> Duo</button>
-            <button class="filter-btn" data-filter="sup"><i class="bi bi-heart-fill"></i> Support</button>
+            <button class="filter-btn active" type="button" data-filter="all">All</button>
+            <button class="filter-btn" type="button" data-filter="top"><i class="bi bi-shield-fill"></i> Baron</button>
+            <button class="filter-btn" type="button" data-filter="jg"><i class="bi bi-tree-fill"></i> Jungle</button>
+            <button class="filter-btn" type="button" data-filter="mid"><i class="bi bi-lightning-fill"></i> Mid</button>
+            <button class="filter-btn" type="button" data-filter="ad"><i class="bi bi-crosshair"></i> Duo</button>
+            <button class="filter-btn" type="button" data-filter="sup"><i class="bi bi-heart-fill"></i> Support</button>
         </div>
 
         <!-- Role Filters -->
         <div class="filter-bar" id="roleFilters">
-            <button class="filter-btn active" data-filter="all">All Roles</button>
-            <button class="filter-btn" data-filter="fighter">Fighter</button>
-            <button class="filter-btn" data-filter="mage">Mage</button>
-            <button class="filter-btn" data-filter="assassin">Assassin</button>
-            <button class="filter-btn" data-filter="marksman">Marksman</button>
-            <button class="filter-btn" data-filter="support">Support</button>
-            <button class="filter-btn" data-filter="tank">Tank</button>
+            <button class="filter-btn active" type="button" data-filter="all">All Roles</button>
+            <button class="filter-btn" type="button" data-filter="fighter">Fighter</button>
+            <button class="filter-btn" type="button" data-filter="mage">Mage</button>
+            <button class="filter-btn" type="button" data-filter="assassin">Assassin</button>
+            <button class="filter-btn" type="button" data-filter="marksman">Marksman</button>
+            <button class="filter-btn" type="button" data-filter="support">Support</button>
+            <button class="filter-btn" type="button" data-filter="tank">Tank</button>
         </div>
 
         <!-- Grid -->
@@ -195,7 +195,9 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header border-0">
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-modal-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="bi bi-x-lg"></i>
+                </button>
             </div>
             <div class="modal-body p-0">
                 <!-- Splash Header -->
