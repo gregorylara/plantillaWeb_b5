@@ -1,58 +1,48 @@
-/* ===== LEAGUE HUB — MAIN JS ===== */
+/* ===== WILD RIFT HUB — MAIN JS ===== */
 
 // ---------- CONFIG ----------
 const CONFIG = {
-    // Cloudflare Worker proxy URL — replace with your deployed worker URL
-    // The worker holds your Riot API key securely on the server side
-    PROXY_URL: 'https://your-riot-proxy.workers.dev',
+    // Community Wild Rift champion data (free, no key)
+    WR_API: 'https://ry2x.github.io/WildRift-Champs/hero.json',
 
-    // Data Dragon CDN (free, no API key)
-    DDRAGON_BASE: 'https://ddragon.leagueoflegends.com',
-    
-    // Default region for leaderboard
-    DEFAULT_REGION: 'na1',
+    // Data Dragon CDN for images and English names (free, no key)
+    DDRAGON: 'https://ddragon.leagueoflegends.com',
 
-    // Featured champions for hero splash (random pick)
-    FEATURED_CHAMPIONS: [
-        'Ahri', 'Jinx', 'Yasuo', 'Lux', 'LeeSin', 'Thresh',
-        'Zed', 'MissFortune', 'Darius', 'Katarina', 'Ekko', 'KaiSa'
-    ]
+    // Featured champions for hero splash
+    FEATURED: ['Jinx', 'Yasuo', 'Ahri', 'Zed', 'KaiSa', 'Lux', 'LeeSin', 'Thresh', 'Katarina', 'Ekko', 'Darius', 'MissFortune']
 };
 
 // ---------- STATE ----------
-let allChampions = {};
-let currentVersion = '';
+let wrChampions = [];   // Wild Rift champion data
+let ddChampions = {};   // Data Dragon champion data (English names, titles)
+let ddVersion = '';
+let activeLane = 'all';
 let activeRole = 'all';
 
 // ---------- INIT ----------
 document.addEventListener('DOMContentLoaded', async () => {
     initNavbar();
     initSearch();
-    initRoleFilters();
-    initRegionTabs();
+    initFilters();
 
-    // Load data
-    await loadVersion();
-    await loadChampions();
-    loadFreeRotation();
-    loadLeaderboard(CONFIG.DEFAULT_REGION);
+    await loadDDragonVersion();
+    await Promise.all([loadDDragonChampions(), loadWildRiftChampions()]);
+
+    mergeAndRender();
 });
 
-// ---------- NAVBAR SCROLL ----------
+// ---------- NAVBAR ----------
 function initNavbar() {
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => {
         nav.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Smooth scroll for nav links
     document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const target = document.querySelector(link.getAttribute('href'));
             if (target) target.scrollIntoView({ behavior: 'smooth' });
-            
-            // Close mobile menu
             const collapse = document.getElementById('navMenu');
             const bsCollapse = bootstrap.Collapse.getInstance(collapse);
             if (bsCollapse) bsCollapse.hide();
@@ -60,247 +50,253 @@ function initNavbar() {
     });
 }
 
-// ---------- LOAD PATCH VERSION ----------
-async function loadVersion() {
+// ---------- LOAD DATA DRAGON VERSION ----------
+async function loadDDragonVersion() {
     try {
-        const res = await fetch(`${CONFIG.DDRAGON_BASE}/api/versions.json`);
+        const res = await fetch(`${CONFIG.DDRAGON}/api/versions.json`);
         const versions = await res.json();
-        currentVersion = versions[0];
-
-        // Update UI
-        document.getElementById('heroPatchVersion').textContent = currentVersion;
-        document.getElementById('patchVersion').textContent = currentVersion;
+        ddVersion = versions[0];
+        document.getElementById('patchVersion').textContent = ddVersion;
     } catch (err) {
-        console.error('Failed to load version:', err);
-        document.getElementById('heroPatchVersion').textContent = '—';
+        console.error('Version load failed:', err);
         document.getElementById('patchVersion').textContent = '—';
     }
 }
 
-// ---------- LOAD ALL CHAMPIONS ----------
-async function loadChampions() {
+// ---------- LOAD DATA DRAGON CHAMPIONS ----------
+async function loadDDragonChampions() {
     try {
-        const res = await fetch(`${CONFIG.DDRAGON_BASE}/cdn/${currentVersion}/data/en_US/champion.json`);
+        const res = await fetch(`${CONFIG.DDRAGON}/cdn/${ddVersion}/data/en_US/champion.json`);
         const data = await res.json();
-        allChampions = data.data;
-
-        const count = Object.keys(allChampions).length;
-        document.getElementById('statChamps').textContent = count;
-        document.getElementById('heroChampCount').textContent = count;
-
-        renderChampionGrid(allChampions);
-        renderFeaturedSplash();
+        ddChampions = data.data;
     } catch (err) {
-        console.error('Failed to load champions:', err);
-        document.getElementById('championGrid').innerHTML = '<p class="no-results">Failed to load champions. Please try again later.</p>';
+        console.error('DDragon champions failed:', err);
     }
 }
 
-// ---------- RENDER FEATURED HERO SPLASH ----------
-function renderFeaturedSplash() {
-    const keys = CONFIG.FEATURED_CHAMPIONS;
-    const randomKey = keys[Math.floor(Math.random() * keys.length)];
-    const champ = allChampions[randomKey];
+// ---------- LOAD WILD RIFT CHAMPIONS ----------
+async function loadWildRiftChampions() {
+    try {
+        const res = await fetch(CONFIG.WR_API);
+        wrChampions = await res.json();
+        // Filter only champions in Wild Rift
+        wrChampions = wrChampions.filter(c => c.is_wr === true);
+    } catch (err) {
+        console.error('WR champions failed:', err);
+    }
+}
 
-    if (!champ) return;
+// ---------- MERGE DATA & RENDER ----------
+function mergeAndRender() {
+    // Enrich WR data with English names/titles from DDragon
+    wrChampions.forEach(wr => {
+        const dd = ddChampions[wr.id];
+        if (dd) {
+            wr.nameEn = dd.name;
+            wr.titleEn = dd.title;
+        } else {
+            wr.nameEn = wr.id;
+            wr.titleEn = '';
+        }
+    });
 
-    const container = document.getElementById('featuredSplash');
-    container.innerHTML = `
-        <img src="${CONFIG.DDRAGON_BASE}/cdn/img/champion/splash/${randomKey}_0.jpg"
-             alt="${champ.name} Splash Art"
-             loading="lazy">
-        <div class="splash-overlay">
-            <div class="splash-champion-name">${champ.name}</div>
-            <div class="splash-champion-title">${champ.title}</div>
+    // Sort alphabetically
+    wrChampions.sort((a, b) => a.nameEn.localeCompare(b.nameEn));
+
+    // Update stats
+    const count = wrChampions.length;
+    document.getElementById('statChamps').textContent = count;
+    document.getElementById('heroChampCount').textContent = count;
+
+    renderHeroSplash();
+    renderChampionGrid(wrChampions);
+    renderStats();
+    renderRoleBars();
+}
+
+// ---------- HERO SPLASH ----------
+function renderHeroSplash() {
+    const randomId = CONFIG.FEATURED[Math.floor(Math.random() * CONFIG.FEATURED.length)];
+    const dd = ddChampions[randomId];
+    if (!dd) return;
+
+    document.getElementById('heroSplash').innerHTML = `
+        <img src="${CONFIG.DDRAGON}/cdn/img/champion/splash/${randomId}_0.jpg"
+             alt="${dd.name}" loading="lazy">
+        <div class="splash-info">
+            <div class="splash-name">${dd.name}</div>
+            <div class="splash-title">${dd.title}</div>
         </div>
     `;
 }
 
-// ---------- RENDER CHAMPION GRID ----------
-function renderChampionGrid(champions) {
+// ---------- CHAMPION GRID ----------
+function renderChampionGrid(champs) {
     const grid = document.getElementById('championGrid');
-    const champArray = Object.values(champions);
 
-    if (champArray.length === 0) {
+    if (champs.length === 0) {
         grid.innerHTML = '<p class="no-results"><i class="bi bi-emoji-frown"></i> No champions found</p>';
         return;
     }
 
-    // Sort alphabetically
-    champArray.sort((a, b) => a.name.localeCompare(b.name));
+    grid.innerHTML = champs.map(c => {
+        const roles = getRoles(c);
+        const lanes = getLanes(c);
 
-    grid.innerHTML = champArray.map(champ => `
-        <div class="champion-card" data-tags="${champ.tags.join(',')}" data-name="${champ.name.toLowerCase()}">
-            <img src="${CONFIG.DDRAGON_BASE}/cdn/${currentVersion}/img/champion/${champ.id}.png"
-                 alt="${champ.name}"
-                 loading="lazy">
-            <div class="card-info">
-                <span class="name">${champ.name}</span>
-                <span class="title">${champ.title}</span>
+        return `
+            <div class="champion-card"
+                 data-name="${c.nameEn.toLowerCase()}"
+                 data-roles="${roles.join(',').toLowerCase()}"
+                 data-lanes="${lanes.join(',').toLowerCase()}">
+                <img src="${CONFIG.DDRAGON}/cdn/${ddVersion}/img/champion/${c.id}.png"
+                     alt="${c.nameEn}" loading="lazy">
+                <div class="lane-dots">
+                    ${lanes.map(l => `<span class="lane-dot" title="${l}">${getLaneIcon(l)}</span>`).join('')}
+                </div>
+                <div class="card-info">
+                    <span class="name">${c.nameEn}</span>
+                    <span class="role-tag">${roles[0] || ''}</span>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+function getRoles(c) {
+    const roles = [];
+    if (c.is_fighter) roles.push('Fighter');
+    if (c.is_mage) roles.push('Mage');
+    if (c.is_assassin) roles.push('Assassin');
+    if (c.is_marksman) roles.push('Marksman');
+    if (c.is_support) roles.push('Support');
+    if (c.is_tank) roles.push('Tank');
+    return roles;
+}
+
+function getLanes(c) {
+    const lanes = [];
+    if (c.is_top) lanes.push('top');
+    if (c.is_jg) lanes.push('jg');
+    if (c.is_mid) lanes.push('mid');
+    if (c.is_ad) lanes.push('ad');
+    if (c.is_sup) lanes.push('sup');
+    return lanes;
+}
+
+function getLaneIcon(lane) {
+    const icons = { top: 'B', jg: 'J', mid: 'M', ad: 'D', sup: 'S' };
+    return icons[lane] || lane[0].toUpperCase();
+}
+
+// ---------- SEARCH & FILTERS ----------
+function initSearch() {
+    const input = document.getElementById('championSearch');
+    let timer;
+    input.addEventListener('input', () => {
+        clearTimeout(timer);
+        timer = setTimeout(applyFilters, 200);
+    });
+}
+
+function initFilters() {
+    document.getElementById('laneFilters').addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        document.querySelectorAll('#laneFilters .filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeLane = btn.dataset.filter;
+        applyFilters();
+    });
+
+    document.getElementById('roleFilters').addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        document.querySelectorAll('#roleFilters .filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeRole = btn.dataset.filter;
+        applyFilters();
+    });
+}
+
+function applyFilters() {
+    const query = document.getElementById('championSearch').value.toLowerCase().trim();
+
+    let filtered = wrChampions;
+
+    // Lane filter
+    if (activeLane !== 'all') {
+        const key = `is_${activeLane}`;
+        filtered = filtered.filter(c => c[key] === true);
+    }
+
+    // Role filter
+    if (activeRole !== 'all') {
+        const key = `is_${activeRole}`;
+        filtered = filtered.filter(c => c[key] === true);
+    }
+
+    // Search
+    if (query) {
+        filtered = filtered.filter(c => c.nameEn.toLowerCase().includes(query));
+    }
+
+    renderChampionGrid(filtered);
+}
+
+// ---------- STATS OVERVIEW ----------
+function renderStats() {
+    const total = wrChampions.length;
+    const fighters = wrChampions.filter(c => c.is_fighter).length;
+    const mages = wrChampions.filter(c => c.is_mage).length;
+    const assassins = wrChampions.filter(c => c.is_assassin).length;
+    const marksmen = wrChampions.filter(c => c.is_marksman).length;
+    const supports = wrChampions.filter(c => c.is_support).length;
+    const tanks = wrChampions.filter(c => c.is_tank).length;
+
+    const hardChamps = wrChampions.filter(c => c.difficult === 3).length;
+    const avgDmg = (wrChampions.reduce((s, c) => s + (c.damage || 0), 0) / total).toFixed(1);
+
+    const stats = [
+        { icon: 'bi-people-fill', label: 'Total Champions', value: total, desc: 'Available in Wild Rift' },
+        { icon: 'bi-lightning-fill', label: 'High Difficulty', value: hardChamps, desc: 'Rating 3/3 difficulty' },
+        { icon: 'bi-fire', label: 'Avg. Damage', value: avgDmg, desc: 'Average damage rating' },
+        { icon: 'bi-shield-fill', label: 'Tanks', value: tanks, desc: 'Frontline champions' },
+    ];
+
+    document.getElementById('statsGrid').innerHTML = stats.map(s => `
+        <div class="col-6 col-md-3">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="bi ${s.icon}"></i></div>
+                <h5>${s.label}</h5>
+                <div class="stat-value">${s.value}</div>
+                <p>${s.desc}</p>
             </div>
         </div>
     `).join('');
 }
 
-// ---------- SEARCH ----------
-function initSearch() {
-    const input = document.getElementById('championSearch');
-    let debounceTimer;
+// ---------- ROLE BREAKDOWN BARS ----------
+function renderRoleBars() {
+    const total = wrChampions.length;
+    const roles = [
+        { name: 'Fighter', key: 'is_fighter', css: 'fighter' },
+        { name: 'Mage', key: 'is_mage', css: 'mage' },
+        { name: 'Assassin', key: 'is_assassin', css: 'assassin' },
+        { name: 'Marksman', key: 'is_marksman', css: 'marksman' },
+        { name: 'Support', key: 'is_support', css: 'support' },
+        { name: 'Tank', key: 'is_tank', css: 'tank' },
+    ];
 
-    input.addEventListener('input', () => {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(() => {
-            filterChampions();
-        }, 200);
-    });
-}
-
-function filterChampions() {
-    const query = document.getElementById('championSearch').value.toLowerCase().trim();
-    
-    let filtered = Object.values(allChampions);
-
-    // Filter by role
-    if (activeRole !== 'all') {
-        filtered = filtered.filter(c => c.tags.includes(activeRole));
-    }
-
-    // Filter by search query
-    if (query) {
-        filtered = filtered.filter(c => c.name.toLowerCase().includes(query));
-    }
-
-    // Convert back to object format for rendering
-    const obj = {};
-    filtered.forEach(c => { obj[c.id] = c; });
-    renderChampionGrid(obj);
-}
-
-// ---------- ROLE FILTERS ----------
-function initRoleFilters() {
-    document.getElementById('roleFilters').addEventListener('click', (e) => {
-        const btn = e.target.closest('.role-btn');
-        if (!btn) return;
-
-        document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        activeRole = btn.dataset.role;
-        filterChampions();
-    });
-}
-
-// ---------- FREE ROTATION ----------
-async function loadFreeRotation() {
-    const grid = document.getElementById('rotationGrid');
-
-    try {
-        const res = await fetch(`${CONFIG.PROXY_URL}/rotation`);
-
-        if (!res.ok) throw new Error('Proxy not available');
-
-        const data = await res.json();
-        const freeIds = data.freeChampionIds || [];
-
-        document.getElementById('statRotation').textContent = freeIds.length;
-
-        // Map champion IDs to champion data
-        const champEntries = Object.values(allChampions);
-        const freeChamps = freeIds.map(id => {
-            return champEntries.find(c => parseInt(c.key) === id);
-        }).filter(Boolean);
-
-        grid.innerHTML = freeChamps.map(champ => `
-            <div class="rotation-card">
-                <img src="${CONFIG.DDRAGON_BASE}/cdn/${currentVersion}/img/champion/${champ.id}.png"
-                     alt="${champ.name}"
-                     loading="lazy">
-                <span class="champ-name">${champ.name}</span>
+    document.getElementById('roleBars').innerHTML = roles.map(r => {
+        const count = wrChampions.filter(c => c[r.key]).length;
+        const pct = Math.round((count / total) * 100);
+        return `
+            <div class="role-bar-item">
+                <div class="role-bar-label">${r.name}</div>
+                <div class="role-bar-track">
+                    <div class="role-bar-fill ${r.css}" style="width:${pct}%">${count}</div>
+                </div>
             </div>
-        `).join('');
-    } catch (err) {
-        console.warn('Free rotation unavailable (proxy not configured):', err.message);
-        // Fallback: show random champions as "featured"
-        const champArray = Object.values(allChampions);
-        const shuffled = champArray.sort(() => 0.5 - Math.random()).slice(0, 20);
-        
-        document.getElementById('statRotation').textContent = shuffled.length;
-
-        grid.innerHTML = `
-            <p class="no-results" style="grid-column:1/-1; font-size:0.85rem; opacity:0.6;">
-                <i class="bi bi-info-circle"></i> Free rotation requires the proxy server. Showing featured champions instead.
-            </p>
-        ` + shuffled.map(champ => `
-            <div class="rotation-card">
-                <img src="${CONFIG.DDRAGON_BASE}/cdn/${currentVersion}/img/champion/${champ.id}.png"
-                     alt="${champ.name}"
-                     loading="lazy">
-                <span class="champ-name">${champ.name}</span>
-            </div>
-        `).join('');
-    }
-}
-
-// ---------- REGION TABS ----------
-function initRegionTabs() {
-    document.getElementById('regionTabs').addEventListener('click', (e) => {
-        const tab = e.target.closest('.region-tab');
-        if (!tab) return;
-
-        document.querySelectorAll('.region-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-
-        loadLeaderboard(tab.dataset.region);
-    });
-}
-
-// ---------- LEADERBOARD ----------
-async function loadLeaderboard(region) {
-    const tbody = document.getElementById('leaderboardBody');
-
-    // Show skeleton
-    tbody.innerHTML = Array(10).fill('<tr><td colspan="5"><div class="skeleton skeleton-row"></div></td></tr>').join('');
-
-    try {
-        const res = await fetch(`${CONFIG.PROXY_URL}/challenger/${region}`);
-
-        if (!res.ok) throw new Error('Proxy not available');
-
-        const data = await res.json();
-        const entries = (data.entries || [])
-            .sort((a, b) => b.leaguePoints - a.leaguePoints)
-            .slice(0, 50);
-
-        tbody.innerHTML = entries.map((entry, i) => {
-            const rank = i + 1;
-            const games = entry.wins + entry.losses;
-            const wr = games > 0 ? ((entry.wins / games) * 100).toFixed(1) : '0.0';
-            const wrClass = wr >= 60 ? 'high' : wr >= 50 ? 'medium' : 'low';
-            const rankClass = rank <= 3 ? `rank-${rank}` : '';
-
-            return `
-                <tr>
-                    <td><span class="rank-number ${rankClass}">${rank}</span></td>
-                    <td class="summoner-name">${entry.summonerName || 'Hidden'}</td>
-                    <td class="lp-value">${entry.leaguePoints.toLocaleString()} LP</td>
-                    <td>${games}</td>
-                    <td><span class="win-rate ${wrClass}">${wr}%</span></td>
-                </tr>
-            `;
-        }).join('');
-
-        if (entries.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="5" class="text-center py-4" style="color: var(--lol-text);">No data available for this region</td></tr>';
-        }
-    } catch (err) {
-        console.warn('Leaderboard unavailable (proxy not configured):', err.message);
-        tbody.innerHTML = `
-            <tr>
-                <td colspan="5" class="text-center py-4" style="color: var(--lol-text);">
-                    <i class="bi bi-info-circle"></i> Leaderboard requires the proxy server to be deployed.
-                    <br><small style="opacity:0.5;">Deploy the Cloudflare Worker and update PROXY_URL in main.js</small>
-                </td>
-            </tr>
         `;
-    }
+    }).join('');
 }

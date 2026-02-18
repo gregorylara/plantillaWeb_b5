@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>League Hub — Champion Stats, Rotation &amp; Leaderboards</title>
-    <meta name="description" content="League of Legends info hub with champion gallery, free rotation, Challenger leaderboards, and patch notes powered by Riot Games API.">
+    <title>Wild Rift Hub — Champions, Roles &amp; Stats</title>
+    <meta name="description" content="Wild Rift champion encyclopedia — browse all champions, filter by lane and role, view stats and difficulty ratings.">
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
 <nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <i class="bi bi-hexagon-fill"></i> League Hub
+            <i class="bi bi-phone-fill"></i> Wild Rift Hub
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -32,9 +32,9 @@
         <div class="collapse navbar-collapse justify-content-end" id="navMenu">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#rotation">Rotation</a></li>
                 <li class="nav-item"><a class="nav-link" href="#champions">Champions</a></li>
-                <li class="nav-item"><a class="nav-link" href="#leaderboard">Leaderboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#stats">Stats</a></li>
+                <li class="nav-item"><a class="nav-link" href="#roles">Roles</a></li>
                 <li class="nav-item"><a class="nav-link" href="#patch">Patch</a></li>
             </ul>
         </div>
@@ -47,16 +47,16 @@
     <div class="container hero-content">
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
-                <div class="hero-patch-badge">
-                    <i class="bi bi-arrow-repeat"></i>
-                    <span>Patch <span id="heroPatchVersion">...</span></span>
+                <div class="hero-badge">
+                    <i class="bi bi-phone-fill"></i>
+                    <span>Mobile MOBA</span>
                 </div>
                 <h1 class="hero-title">
-                    League Hub
-                    <span>Champion Stats &amp; Rankings</span>
+                    <span class="accent">Wild Rift</span>
+                    <span>Champion Encyclopedia</span>
                 </h1>
                 <p class="hero-subtitle">
-                    Explore all <strong id="heroChampCount">160+</strong> champions, check this week's free rotation, and see who dominates the Challenger leaderboards across every region.
+                    Explore all <strong id="heroChampCount">—</strong> Wild Rift champions. Filter by lane, role, or search by name — powered by live data.
                 </p>
                 <div class="hero-stats">
                     <div>
@@ -64,58 +64,33 @@
                         <span class="hero-stat-label">Champions</span>
                     </div>
                     <div>
-                        <span class="hero-stat-value" id="statRotation">—</span>
-                        <span class="hero-stat-label">Free This Week</span>
+                        <span class="hero-stat-value" id="statRoles">6</span>
+                        <span class="hero-stat-label">Roles</span>
                     </div>
                     <div>
-                        <span class="hero-stat-value" id="statRegions">7</span>
-                        <span class="hero-stat-label">Regions</span>
+                        <span class="hero-stat-value" id="statLanes">5</span>
+                        <span class="hero-stat-label">Lanes</span>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 d-none d-lg-block">
-                <div class="hero-featured-splash" id="featuredSplash">
-                    <!-- JS fills featured champion splash -->
-                    <div class="skeleton skeleton-card" style="height:500px;"></div>
+                <div class="hero-splash" id="heroSplash">
+                    <div class="skeleton skeleton-card" style="height:480px;"></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===== FREE ROTATION ===== -->
-<section id="rotation" class="rotation-section py-section">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-tag"><i class="bi bi-stars"></i> Free This Week</div>
-            <h2 class="section-title">Champion Rotation</h2>
-            <p class="section-subtitle">These champions are free to play this week — try them all before the rotation resets!</p>
-        </div>
-        <div class="rotation-grid" id="rotationGrid">
-            <!-- JS fills rotation cards or skeleton -->
-            <div class="skeleton skeleton-circle"></div>
-            <div class="skeleton skeleton-circle"></div>
-            <div class="skeleton skeleton-circle"></div>
-            <div class="skeleton skeleton-circle"></div>
-            <div class="skeleton skeleton-circle"></div>
-            <div class="skeleton skeleton-circle"></div>
-            <div class="skeleton skeleton-circle"></div>
-            <div class="skeleton skeleton-circle"></div>
-            <div class="skeleton skeleton-circle"></div>
-            <div class="skeleton skeleton-circle"></div>
-        </div>
-    </div>
-</section>
+<div class="hex-divider"><i class="bi bi-diamond-fill"></i></div>
 
-<div class="hex-divider"><i class="bi bi-hexagon-fill"></i></div>
-
-<!-- ===== CHAMPIONS GALLERY ===== -->
-<section id="champions" class="champions-section py-section">
+<!-- ===== CHAMPIONS ===== -->
+<section id="champions" class="py-section">
     <div class="container">
         <div class="section-header">
             <div class="section-tag"><i class="bi bi-people-fill"></i> All Champions</div>
             <h2 class="section-title">Champion Gallery</h2>
-            <p class="section-subtitle">Browse and search across every champion in League of Legends</p>
+            <p class="section-subtitle">Browse every champion available in Wild Rift — filter by role or lane</p>
         </div>
 
         <!-- Search -->
@@ -124,96 +99,93 @@
             <input type="text" id="championSearch" placeholder="Search champions..." autocomplete="off">
         </div>
 
-        <!-- Role Filters -->
-        <div class="role-filters" id="roleFilters">
-            <button class="role-btn active" data-role="all">All</button>
-            <button class="role-btn" data-role="Assassin">Assassin</button>
-            <button class="role-btn" data-role="Fighter">Fighter</button>
-            <button class="role-btn" data-role="Mage">Mage</button>
-            <button class="role-btn" data-role="Marksman">Marksman</button>
-            <button class="role-btn" data-role="Support">Support</button>
-            <button class="role-btn" data-role="Tank">Tank</button>
+        <!-- Lane Filters -->
+        <div class="filter-bar" id="laneFilters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="top"><i class="bi bi-shield-fill"></i> Baron</button>
+            <button class="filter-btn" data-filter="jg"><i class="bi bi-tree-fill"></i> Jungle</button>
+            <button class="filter-btn" data-filter="mid"><i class="bi bi-lightning-fill"></i> Mid</button>
+            <button class="filter-btn" data-filter="ad"><i class="bi bi-crosshair"></i> Duo</button>
+            <button class="filter-btn" data-filter="sup"><i class="bi bi-heart-fill"></i> Support</button>
         </div>
 
-        <!-- Champion Grid -->
+        <!-- Role Filters -->
+        <div class="filter-bar" id="roleFilters">
+            <button class="filter-btn active" data-filter="all">All Roles</button>
+            <button class="filter-btn" data-filter="fighter">Fighter</button>
+            <button class="filter-btn" data-filter="mage">Mage</button>
+            <button class="filter-btn" data-filter="assassin">Assassin</button>
+            <button class="filter-btn" data-filter="marksman">Marksman</button>
+            <button class="filter-btn" data-filter="support">Support</button>
+            <button class="filter-btn" data-filter="tank">Tank</button>
+        </div>
+
+        <!-- Grid -->
         <div class="champion-grid" id="championGrid">
-            <!-- JS fills champion cards -->
+            <!-- JS fills -->
         </div>
     </div>
 </section>
 
-<!-- ===== LEADERBOARD ===== -->
-<section id="leaderboard" class="leaderboard-section py-section">
+<div class="hex-divider"><i class="bi bi-diamond-fill"></i></div>
+
+<!-- ===== STATS ===== -->
+<section id="stats" class="stats-section py-section">
     <div class="container">
         <div class="section-header">
-            <div class="section-tag"><i class="bi bi-trophy-fill"></i> Rankings</div>
-            <h2 class="section-title">Challenger Leaderboard</h2>
-            <p class="section-subtitle">The top players dominating Solo/Duo ranked across every region</p>
+            <div class="section-tag"><i class="bi bi-bar-chart-fill"></i> Overview</div>
+            <h2 class="section-title">Wild Rift Stats</h2>
+            <p class="section-subtitle">Quick look at the champion roster breakdown</p>
         </div>
-
-        <!-- Region Tabs -->
-        <div class="region-tabs" id="regionTabs">
-            <button class="region-tab active" data-region="na1">NA</button>
-            <button class="region-tab" data-region="euw1">EUW</button>
-            <button class="region-tab" data-region="eun1">EUNE</button>
-            <button class="region-tab" data-region="kr">KR</button>
-            <button class="region-tab" data-region="la1">LAN</button>
-            <button class="region-tab" data-region="la2">LAS</button>
-            <button class="region-tab" data-region="br1">BR</button>
-        </div>
-
-        <!-- Table -->
-        <div class="leaderboard-table" id="leaderboardContainer">
-            <table>
-                <thead>
-                    <tr>
-                        <th style="width:60px;">Rank</th>
-                        <th>Summoner</th>
-                        <th>LP</th>
-                        <th>Games</th>
-                        <th style="width:80px;">Win Rate</th>
-                    </tr>
-                </thead>
-                <tbody id="leaderboardBody">
-                    <!-- JS fills rows -->
-                    <tr><td colspan="5"><div class="skeleton skeleton-row"></div></td></tr>
-                    <tr><td colspan="5"><div class="skeleton skeleton-row"></div></td></tr>
-                    <tr><td colspan="5"><div class="skeleton skeleton-row"></div></td></tr>
-                    <tr><td colspan="5"><div class="skeleton skeleton-row"></div></td></tr>
-                    <tr><td colspan="5"><div class="skeleton skeleton-row"></div></td></tr>
-                </tbody>
-            </table>
+        <div class="row g-4" id="statsGrid">
+            <!-- JS fills -->
         </div>
     </div>
 </section>
 
-<div class="hex-divider"><i class="bi bi-hexagon-fill"></i></div>
+<div class="hex-divider"><i class="bi bi-diamond-fill"></i></div>
 
-<!-- ===== PATCH INFO ===== -->
+<!-- ===== ROLE BREAKDOWN ===== -->
+<section id="roles" class="role-section py-section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag"><i class="bi bi-pie-chart-fill"></i> Distribution</div>
+            <h2 class="section-title">Role Breakdown</h2>
+            <p class="section-subtitle">How many champions belong to each role</p>
+        </div>
+        <div class="role-bar-container" id="roleBars">
+            <!-- JS fills -->
+        </div>
+    </div>
+</section>
+
+<div class="hex-divider"><i class="bi bi-diamond-fill"></i></div>
+
+<!-- ===== PATCH ===== -->
 <section id="patch" class="patch-section py-section">
     <div class="container">
         <div class="section-header">
-            <div class="section-tag"><i class="bi bi-lightning-fill"></i> Latest Update</div>
-            <h2 class="section-title">Current Patch</h2>
+            <div class="section-tag"><i class="bi bi-lightning-fill"></i> Latest</div>
+            <h2 class="section-title">Game Version</h2>
         </div>
         <div class="patch-card">
             <div class="patch-version" id="patchVersion">...</div>
-            <p class="patch-label">Current Game Version</p>
-            <a href="https://www.leagueoflegends.com/en-us/news/tags/patch-notes/" target="_blank" rel="noopener" class="patch-link">
-                <i class="bi bi-newspaper"></i> Read Patch Notes
+            <p class="patch-label">Current Data Dragon Version</p>
+            <a href="https://wildrift.leagueoflegends.com/en-us/news/" target="_blank" rel="noopener" class="patch-link">
+                <i class="bi bi-newspaper"></i> Wild Rift News
             </a>
         </div>
     </div>
 </section>
 
 <!-- ===== FOOTER ===== -->
-<footer class="lol-footer">
+<footer class="wr-footer">
     <div class="container">
         <p>
-            League Hub is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties.
+            Wild Rift Hub is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties.
         </p>
         <p class="mt-2">
-            Riot Games, League of Legends, and all related marks are trademarks of <a href="https://www.riotgames.com" target="_blank" rel="noopener">Riot Games, Inc.</a>
+            Riot Games, Wild Rift, and all related marks are trademarks of <a href="https://www.riotgames.com" target="_blank" rel="noopener">Riot Games, Inc.</a>
         </p>
     </div>
 </footer>
