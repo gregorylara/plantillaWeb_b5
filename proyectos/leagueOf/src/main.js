@@ -185,10 +185,11 @@ function renderHeroSplash() {
         heroSplash.innerHTML = `<img src="${splashUrl}" alt="${champ.name}">`;
         
         // Add info overlay for splash
+        // Use champ.name for pretty spacing (Lee Sin vs LeeSin)
         const info = document.createElement('div');
         info.className = 'splash-info';
         info.innerHTML = `
-            <div class="splash-name">${champ.id}</div>
+            <div class="splash-name">${champ.name}</div>
             <div class="splash-title">${champ.title || 'The Champion'}</div>
         `;
         heroSplash.appendChild(info);
@@ -208,7 +209,11 @@ function renderChampionGrid(champs) {
         const roles = getRoles(c);
         const lanes = getLanes(c);
 
-        // serialize for click handler
+        // Try to get pretty name from DD
+        const ddInfo = ddChampions[c.id];
+        const displayName = ddInfo ? ddInfo.name : c.nameEn;
+
+        // serialize for click handler (keep using nameEn for search/data attrs if needed, but display Name is displayName)
         const safeName = c.nameEn.replace(/'/g, "\\'");
 
         return `
@@ -218,12 +223,12 @@ function renderChampionGrid(champs) {
                  data-roles="${roles.join(',').toLowerCase()}"
                  data-lanes="${lanes.join(',').toLowerCase()}">
                 <img src="${CONFIG.DDRAGON}/cdn/${ddVersion}/img/champion/${c.id}.png"
-                     alt="${c.nameEn}" loading="lazy">
+                     alt="${displayName}" loading="lazy">
                 <div class="lane-dots">
                     ${lanes.map(l => `<span class="lane-dot" title="${l}">${getLaneIcon(l)}</span>`).join('')}
                 </div>
                 <div class="card-info">
-                    <span class="name">${c.nameEn}</span>
+                    <span class="name">${displayName}</span>
                     <span class="role-tag">${roles[0] || ''}</span>
                 </div>
             </div>
@@ -239,8 +244,12 @@ window.openChampionModal = function(champId) {
     if (!champ) return;
 
     // 1. Populate Header
-    document.getElementById('modalName').textContent = champ.nameEn;
-    document.getElementById('modalTitle').textContent = champ.titleEn || 'The Champion';
+    // Lookup in ddChampions for more metadata (like title and pretty name)
+    const ddChamp = ddChampions[champ.id] || Object.values(ddChampions).find(c => c.name === champ.nameEn);
+    const displayName = ddChamp ? ddChamp.name : champ.nameEn;
+
+    document.getElementById('modalName').textContent = displayName;
+    document.getElementById('modalTitle').textContent = ddChamp ? ddChamp.title : (champ.titleEn || 'The Champion');
     
     // Splash
     const splashUrl = `${CONFIG.DDRAGON}/cdn/img/champion/splash/${champ.id}_0.jpg`;

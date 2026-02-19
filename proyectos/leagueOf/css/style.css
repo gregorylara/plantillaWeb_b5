@@ -696,7 +696,9 @@ a:hover { color: var(--wr-gold); }
     .hero-title { font-size: 2rem; }
     .hero-stats { gap: 1.5rem; }
     .hero-stat-value { font-size: 1.5rem; }
-    .hero-splash img { height: 220px; }
+    .hero-splash { overflow: hidden; border: 1px solid rgba(10, 200, 185, 0.2); }
+    .hero-splash img { height: 260px; }
+    .hero-splash .splash-title { font-size: 0.8rem; }
     .champion-grid { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
     .py-section { padding: 3rem 0; }
     .patch-version { font-size: 2rem; }
