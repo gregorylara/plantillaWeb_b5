@@ -1,0 +1,367 @@
+/* ===== SUSHIKOI — STYLES ===== */
+
+/* ---------- VARIABLES ---------- */
+:root {
+    --koi-orange: #ff6b6b;
+    --koi-orange-dark: #e85d5d;
+    --koi-black: #1a1a1a;
+    --koi-dark: #0f0f0f;
+    --koi-gray: #f4f4f4;
+    --koi-white: #ffffff;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Outfit', sans-serif;
+    --transition: all 0.3s ease;
+    --shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* ---------- BASE ---------- */
+body {
+    font-family: var(--font-body);
+    background: var(--koi-white);
+    color: var(--koi-black);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+section { position: relative; }
+
+.py-section { padding: 5rem 0; }
+
+.text-orange { color: var(--koi-orange) !important; }
+.bg-orange { background-color: var(--koi-orange) !important; }
+.bg-black { background-color: var(--koi-black) !important; }
+
+/* ---------- BUTTONS ---------- */
+.btn-primary {
+    background: var(--koi-orange);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    background: var(--koi-orange-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.btn-outline-light {
+    border: 2px solid rgba(255,255,255,0.7);
+    border-radius: 50px;
+    padding: 12px 30px;
+    font-weight: 600;
+}
+
+.btn-outline-light:hover {
+    background: var(--koi-white);
+    color: var(--koi-black);
+    border-color: var(--koi-white);
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.brand-orange { color: var(--koi-orange); }
+
+.nav-link {
+    font-weight: 500;
+    color: var(--koi-black);
+    margin: 0 10px;
+    transition: var(--transition);
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--koi-orange);
+}
+
+.btn-cta {
+    background: var(--koi-black);
+    color: white !important;
+    padding: 8px 20px !important;
+    border-radius: 50px;
+}
+
+/* ---------- HERO ---------- */
+.hero-section {
+    height: 100vh;
+    min-height: 600px;
+    /* Japanese Koi Background with Overlay */
+    background: 
+        linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)),
+        url('../img/sushi_mosaic_tray.png'); 
+    background-size: cover;
+    background-position: center;
+    /* Removed fixed attachment to fix visibility issues on mobile/some vp */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Koi Fish Pseudo-element for specific positioning if needed */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at 70% 50%, rgba(255, 107, 107, 0.1), transparent 50%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.display-2 { font-size: 4rem; margin-bottom: 1rem; }
+
+/* Animations */
+.animate-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s forwards;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- FEATURES ---------- */
+.feature-card {
+    padding: 2rem;
+    border-radius: 15px;
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 107, 107, 0.1);
+    color: var(--koi-orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto;
+}
+
+/* ---------- FEATURED MENU ---------- */
+.koi-divider {
+    width: 60px;
+    height: 4px;
+    background: var(--koi-orange);
+    margin: 1rem auto;
+    border-radius: 2px;
+}
+
+.menu-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    height: 100%;
+    transition: var(--transition);
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.menu-card img {
+    height: 220px;
+    object-fit: cover;
+}
+
+.menu-card-body { padding: 1.5rem; }
+.menu-price { font-weight: 700; color: var(--koi-orange); font-size: 1.1rem; }
+
+/* ---------- SUSHI EDUCATION ---------- */
+.edu-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    height: 100%;
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.edu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.edu-icon {
+    font-size: 2.5rem;
+    color: var(--koi-orange);
+    margin-bottom: 1rem;
+}
+
+.edu-card h4 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--koi-black);
+}
+
+.edu-card p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ---------- BUILDER ---------- */
+#menuTabs .nav-link {
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 8px 24px;
+    background: transparent;
+    transition: var(--transition);
+}
+
+#menuTabs .nav-link:hover {
+    color: white;
+    border-color: white;
+    background: rgba(255,255,255,0.05);
+}
+
+#menuTabs .nav-link.active {
+    background: var(--koi-orange);
+    color: white;
+    border-color: var(--koi-orange);
+}
+
+.step-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.9rem;
+}
+
+.step.active { color: var(--koi-orange); font-weight: 700; }
+.line { width: 30px; height: 1px; background: rgba(255,255,255,0.2); }
+
+.builder-option {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.builder-option:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.builder-option.selected {
+    border-color: var(--koi-orange);
+    background: rgba(255, 107, 107, 0.1);
+}
+
+.tray-preview-card {
+    background: var(--koi-dark);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.tray-visual {
+    min-height: 200px;
+    background: #000;
+    border-radius: 10px;
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 10px;
+    gap: 5px;
+    overflow: hidden;
+}
+
+.tray-slot {
+    width: calc(25% - 3.75px); /* 4 items per row */
+    aspect-ratio: 1;
+    background: #222;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    color: #444;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.tray-slot.filled {
+    background: var(--koi-white); 
+    border: 1px solid var(--koi-orange);
+}
+
+.tray-slot img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+.tray-slot:hover::after {
+    content: "×";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,0,0,0.5);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.selectable-item {
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.02);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.selectable-item:hover {
+    border-color: var(--koi-orange);
+}
+
+.menu-scroll-container {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
