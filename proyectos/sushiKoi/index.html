@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SushiKoi | Premium Catering</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="brand-koi">Sushi</span><span class="brand-orange">Koi</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#hero">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#featured">Menú</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#builder">Catering</a></li>
+                    <li class="nav-item"><a class="nav-link btn-cta" href="#builder">Ordenar Ahora</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content text-center">
+            <h1 class="display-2 fw-bold mb-4 animate-up">El Arte del Sushi<br><span class="text-orange">En Tu Evento</span></h1>
+            <p class="lead mb-5 animate-up delay-1">Experiencias culinarias únicas para bodas, fiestas y eventos corporativos.</p>
+            <div class="d-flex justify-content-center gap-3 animate-up delay-2">
+                <a href="#builder" class="btn btn-primary btn-lg px-5">Crear Orden</a>
+                <a href="#featured" class="btn btn-outline-light btn-lg px-5">Ver Menú</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUSHI EDUCATION SECTION -->
+    <section class="py-section bg-light" id="sushi-education">
+        <div class="container">
+            <div class="row mb-5 justify-content-center text-center">
+                <div class="col-lg-8">
+                    <span class="section-subtitle">Nuestra Pasión</span>
+                    <h2 class="section-title mb-4">El Arte del Sushi</h2>
+                    <p class="lead text-muted">
+                        Más que comida, el sushi es una disciplina que combina historia, estética y sabor. 
+                        Nacido en el sudeste asiático como método de conservación, evolucionó en Japón hasta convertirse 
+                        en la experiencia culinaria refinada que conocemos hoy: el equilibrio perfecto entre el arroz avinagrado (shari) 
+                        y el pescado fresco (neta).
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4 highlight-cards">
+                <!-- Maki -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="edu-card">
+                        <div class="edu-icon"><i class="bi bi-vinyl"></i></div>
+                        <h4>Maki</h4>
+                        <p>El clásico rollo. Pescado y arroz envueltos en alga nori por fuera. Perfecto para puristas.</p>
+                    </div>
+                </div>
+                <!-- Uramaki -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="edu-card">
+                        <div class="edu-icon"><i class="bi bi-exclude"></i></div>
+                        <h4>Uramaki</h4>
+                        <p>Conocido como "Inside-out". El arroz va por fuera y el nori por dentro, a menudo cubierto de sésamo o huevas.</p>
+                    </div>
+                </div>
+                <!-- Nigiri -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="edu-card">
+                        <div class="edu-icon"><i class="bi bi-cloud"></i></div>
+                        <h4>Nigiri</h4>
+                        <p>La esencia del sushi. Una bola de arroz moldeada a mano cubierta por una lámina de pescado fresco.</p>
+                    </div>
+                </div>
+                <!-- Sashimi -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="edu-card">
+                        <div class="edu-icon"><i class="bi bi-water"></i></div>
+                        <h4>Sashimi</h4>
+                        <p>Pureza total. Cortes precisos de pescado fresco o marisco, servidos sin arroz. Sabor en su estado más puro.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED MENU (Signature Rolls) -->
+    <section id="featured" class="py-section">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <span class="section-subtitle">Nuestra Selección</span>
+                <h2 class="section-title">Signature Rolls</h2>
+                <div class="koi-divider"></div>
+            </div>
+
+            <div class="row g-4" id="signatureGrid">
+                <!-- JS will populate this -->
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-orange" role="status"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRAY BUILDER (Interactive) -->
+    <section id="builder" class="py-section bg-dark text-white">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <span class="section-subtitle text-orange">Catering Personalizado</span>
+                    <h2 class="section-title text-white">Arma tu Bandeja</h2>
+                    <p class="text-white-50">Elige el tamaño de tu bandeja y selecciona tus rolls favoritos para crear la combinación perfecta.</p>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <div class="step-indicator">
+                        <span class="step active">1. Tamaño</span>
+                        <span class="line"></span>
+                        <span class="step">2. Selección</span>
+                        <span class="line"></span>
+                        <span class="step">3. Ordenar</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-5">
+                <!-- Left: Controls & Menu -->
+                <div class="col-lg-7">
+                    <!-- Step 1: Size Selection -->
+                    <div class="builder-step mb-5" id="stepSize">
+                        <h4 class="mb-3"><i class="bi bi-1-circle"></i> Elige el Tamaño</h4>
+                        <div class="row g-3" id="trayOptions">
+                            <!-- JS populated -->
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Roll Selection -->
+                    <div class="builder-step" id="stepSelection">
+                        <div class="d-flex justify-content-between align-items-end mb-3">
+                            <h4 class="mb-0"><i class="bi bi-2-circle"></i> Agrega Rolls</h4>
+                            <span class="badge bg-orange" id="limitBadge">0/0 Rolls</span>
+                        </div>
+                        
+                        <!-- Tabs for categories -->
+                        <ul class="nav nav-pills mb-3" id="menuTabs">
+                            <li class="nav-item">
+                                <button class="nav-link active" data-category="signatureRolls">Signature</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-category="classicRolls">Clásicos</button>
+                            </li>
+                        </ul>
+
+                        <div class="menu-scroll-container">
+                            <div class="row g-2" id="selectionGrid">
+                                <!-- JS populated rolls to add -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Visual Tray Preview -->
+                <div class="col-lg-5">
+                    <div class="tray-preview-card sticky-top" style="top: 100px; z-index: 1020;">
+                        <div class="card-header border-0 bg-transparent d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Tu Bandeja</h5>
+                            <button class="btn btn-sm btn-link text-white-50" onclick="clearTray()">Limpiar</button>
+                        </div>
+                        <div class="tray-visual" id="trayVisual">
+                            <div class="empty-state">
+                                <i class="bi bi-basket"></i>
+                                <p>Selecciona un tamaño primero</p>
+                            </div>
+                        </div>
+                        <div class="card-footer border-0 bg-transparent">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Precio Base:</span>
+                                <span id="basePrice">€0.00</span>
+                            </div>
+                            <!-- <div class="d-flex justify-content-between mb-3 text-orange">
+                                <span>Extras:</span>
+                                <span id="extraPrice">€0.00</span>
+                            </div> -->
+                            <div class="d-flex justify-content-between total-row mb-4">
+                                <span>Total Estimado:</span>
+                                <span class="display-6 fw-bold" id="totalPrice">€0.00</span>
+                            </div>
+                            <button class="btn btn-orange w-100 py-3 fw-bold" id="btnOrder" disabled onclick="finalizeOrder()">
+                                <i class="bi bi-whatsapp"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-white py-5">
+        <div class="container text-center">
+            <div class="mb-4">
+                <span class="brand-koi fs-3">Sushi</span><span class="brand-orange fs-3">Koi</span>
+            </div>
+            <div class="social-links mb-4">
+                <a href="#" class="mx-2 text-white-50"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="mx-2 text-white-50"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="mx-2 text-white-50"><i class="bi bi-whatsapp"></i></a>
+            </div>
+            <p class="text-white-50 small mb-1">&copy; 2026 SushiKoi Catering. Todos los derechos reservados.</p>
+            <p class="small mb-0">
+                Diseñado y desarrollado por <a href="https://gcdesignstudio.com" target="_blank" class="text-white text-decoration-none fw-bold">gcdesignstudio</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>

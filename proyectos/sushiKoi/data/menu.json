@@ -1,0 +1,100 @@
+{
+  "signatureRolls": [
+    { 
+      "id": "emperador_koi", 
+      "name": "Emperador Koi", 
+      "price": 14.50, 
+      "description": "Atún picante y pepino, cubierto con láminas de salmón flameado, aguacate, perlas de trufa y reducción de anguila.", 
+      "image": "img/emperador_koi_new.png" 
+    },
+    { 
+      "id": "salmon_picon", 
+      "name": "Salmón Picón", 
+      "price": 13.50, 
+      "description": "Salmón fresco con salsa kimuchi, coronado con crujiente de tempura dorado, rodaja de jalapeño y toque de lima.", 
+      "image": "img/salmon_picon_new.png" 
+    },
+    { 
+      "id": "el_crujiente", 
+      "name": "El Crujiente", 
+      "price": 12.95, 
+      "description": "Langostino tempura y queso crema, envuelto en panko dorado con salsa teriyaki y sésamo tostado.", 
+      "image": "img/el_crujiente_new.png" 
+    },
+    { 
+      "id": "volcan_tuna", 
+      "name": "Volcán Tuna", 
+      "price": 13.95, 
+      "description": "Roll California cubierto con tartar de atún rojo picante, cebollino y masago, gratinado ligeramente.", 
+      "image": "img/volcan_tuna.png" 
+    },
+    { 
+      "id": "dragon_dorado", 
+      "name": "Dragón Dorado", 
+      "price": 14.00, 
+      "description": "Anguila kabayaki y pepino, cubierto completamente de aguacate con salsa unagi y huevas de salmón.", 
+      "image": "img/dragon_dorado.png" 
+    },
+    { 
+      "id": "arcoiris_tropico", 
+      "name": "Arcoíris Trópico", 
+      "price": 13.50, 
+      "description": "Cangrejo real y pepino, cubierto de atún, salmón, pez mantequilla y aguacate con salsa de mango.", 
+      "image": "img/arcoiris_tropico.png" 
+    }
+  ],
+  "classicRolls": [
+    { "id": "california_vip", "name": "California VIP", "price": 8.50, "description": "Cangrejo de las nieves, aguacate, pepino y masago naranja." },
+    { "id": "atun_picante", "name": "Atún Picante", "price": 9.00, "description": "Tartar de atún con salsa sriracha, aceite de sésamo y pepino crujiente." },
+    { "id": "filadelfia", "name": "Filadelfia Clásico", "price": 8.50, "description": "Salmón ahumado noruego, queso crema crema y aguacate." },
+    { "id": "ebi_fry", "name": "Ebi Fry", "price": 9.50, "description": "Langostino empanizado, lechuga fresca y mayonesa japonesa." },
+    { "id": "vegetariano_zen", "name": "Vegetariano Zen", "price": 7.50, "description": "Espárragos trigueros, aguacate, pepino y zanahoria encurtida." },
+    { "id": "salmon_avocado", "name": "Salmón & Avocado", "price": 8.00, "description": "Lomo de salmón fresco y aguacate hass en su punto." },
+    { "id": "pollo_teriyaki", "name": "Pollo Teriyaki", "price": 8.50, "description": "Pollo crujiente, pepino y salsa teriyaki dulce." },
+    { "id": "pez_mantequilla", "name": "Pez Mantequilla", "price": 9.00, "description": "Pez mantequilla con trufa negra y cebollino." },
+    { "id": "futomaki_tokio", "name": "Futomaki Tokio", "price": 10.50, "description": "Roll grueso con tamago, cangrejo, pepino y seta shiitake." },
+    { "id": "foie_gras", "name": "Roll de Foie", "price": 11.50, "description": "Foie gras mi-cuit caramelizado con reducción de Pedro Ximénez y manzana." }
+  ],
+  "trays": [
+    { 
+      "id": "tray_s", 
+      "name": "Bandeja Koi Pequeña", 
+      "size": "Pequeña",
+      "pieces": 32, 
+      "price": 45.00, 
+      "rollCount": 4,
+      "description": "Ideal para 2-3 personas. Elige 4 Rolls.",
+      "image": "img/tray_premium.png"
+    },
+    { 
+      "id": "tray_m", 
+      "name": "Bandeja Koi Mediana", 
+      "size": "Mediana",
+      "pieces": 56, 
+      "price": 75.00, 
+      "rollCount": 7,
+      "description": "Perfecta para 4-6 personas. Elige 7 Rolls.",
+      "image": "img/tray_premium.png"
+    },
+    { 
+      "id": "tray_l", 
+      "name": "Bandeja Koi Grande", 
+      "size": "Grande",
+      "pieces": 80, 
+      "price": 99.00, 
+      "rollCount": 10,
+      "description": "La fiesta completa (8-10 personas). Elige 10 Rolls.",
+      "image": "img/tray_premium.png"
+    },
+    { 
+      "id": "tray_xl", 
+      "name": "Bandeja Emperador", 
+      "size": "XXL",
+      "pieces": 120, 
+      "price": 140.00, 
+      "rollCount": 15,
+      "description": "Evento corporativo o boda. Elige 15 Rolls.",
+      "image": "img/tray_premium.png"
+    }
+  ]
+}
