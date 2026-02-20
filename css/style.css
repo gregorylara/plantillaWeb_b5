@@ -1,4 +1,5 @@
-html, body{
+html,
+body {
   margin: 0;
   padding: 0;
   color: white;
@@ -6,40 +7,44 @@ html, body{
 
 /* colores */
 
-:root{
-  --fondo:  #333333;
+:root {
+  --fondo: #333333;
   --acento: #9000ff;
 }
 
-.fondo{
+.fondo {
   background-color: var(--fondo);
 }
 
-main{
+main {
   min-height: 100vh;
 }
 
-a{
+a {
   color: white;
   text-decoration: none;
 }
 
-a:hover{
+a:hover {
   color: white;
 }
-header{
+
+header {
   width: 100%;
 }
-#barraContacto{
+
+#barraContacto {
   color: white;
   background-color: var(--acento);
   padding: 5px;
   width: 100%;
 }
-#portada img{
+
+#portada img {
   width: 100%;
 }
-footer{
+
+footer {
   color: white;
   display: flex;
   justify-content: center;
@@ -62,7 +67,8 @@ footer a {
 footer a:hover {
   transform: scale(1.2);
 }
-.nav{
+
+.nav {
   width: 100%;
 }
 
@@ -113,13 +119,16 @@ footer a:hover {
   display: none;
 }
 
-.card{
-  width: 100%; /* Allow grid to control width */
-  max-width: 350px; /* Optional: keep them from getting too huge */
+.card {
+  width: 100%;
+  /* Allow grid to control width */
+  max-width: 350px;
+  /* Optional: keep them from getting too huge */
   border: 3px solid var(--acento);
   border-radius: 10px;
   background-color: var(--fondo);
-  margin: 0 auto; /* Center cards in their columns */
+  margin: 0 auto;
+  /* Center cards in their columns */
   box-shadow: 0 8px 32px rgba(144, 0, 255, 0.25), 0 4px 16px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -128,38 +137,103 @@ footer a:hover {
   transform: translateY(-8px);
   box-shadow: 0 16px 48px rgba(144, 0, 255, 0.4), 0 8px 24px rgba(0, 0, 0, 0.5);
 }
-.card img{
+
+.card img {
   height: 250px;
   object-fit: cover;
 }
-.card-body{
+
+.card-body {
   background-color: var(--fondo);
   border-radius: 10px;
-  height: auto; /* Allow height to adapt to content */
+  height: auto;
+  /* Allow height to adapt to content */
   min-height: 150px;
 }
+
 #cards {
   padding: 50px 0;
 }
-#cards .card:hover{
+
+#cards .card:hover {
   transition: all 0.3s ease;
   transform: scale(1.1);
 }
 
-/* Responsive Barra Contacto */
-@media (max-width: 768px) {
+/* Responsive Barra Contacto y Footer — Tablet (≤992px) */
+@media (max-width: 992px) {
+
   #barraContacto .container,
   #barraFooter {
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
     padding: 10px 0;
+    text-align: center;
   }
-  
-  #barraContacto .container > div,
-  #barraFooter > div {
+
+  #barraContacto .container>div,
+  #barraFooter>div {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px !important;
+    gap: 12px !important;
+  }
+
+  /* Iconos y texto ligeramente más pequeños en tablet */
+  #barraContacto a span,
+  #barraFooter a span {
+    font-size: 0.85rem;
+  }
+
+  #barraContacto a svg,
+  #barraFooter a svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .navbar-brand img {
+    width: 130px;
+  }
+}
+
+/* Responsive Barra Contacto y Footer — Móvil (≤576px) */
+@media (max-width: 576px) {
+
+  #barraContacto .container,
+  #barraFooter {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 8px;
+    text-align: center;
+  }
+
+  #barraContacto .container>div,
+  #barraFooter>div {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px !important;
+    width: 100%;
+  }
+
+  /* Texto de email y teléfono adaptado a pantalla pequeña */
+  #barraContacto a span,
+  #barraFooter a span {
+    font-size: 0.78rem;
+    word-break: break-word;
+  }
+
+  /* Iconos con tamaño táctil adecuado */
+  #barraContacto a,
+  #barraFooter a {
+    min-height: 36px;
+    padding: 4px 6px;
+  }
+
+  /* Iconos de redes sociales y contacto */
+  #barraContacto a svg,
+  #barraFooter a svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
   }
 
   .navbar-brand img {
@@ -167,8 +241,9 @@ footer a:hover {
   }
 }
 
-.offcanvas{
-  width: 30% !important;
+.offcanvas {
+  width: 280px !important;
+  max-width: 75vw !important;
   background-color: var(--fondo);
 }
 
@@ -236,9 +311,11 @@ footer a:hover {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -254,7 +331,8 @@ footer a:hover {
   position: relative;
   z-index: 1;
   width: 100%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  padding-top: 56.25%;
+  /* 16:9 Aspect Ratio */
   background: #1a1a1a;
   overflow: hidden;
 }
@@ -266,7 +344,8 @@ footer a:hover {
   width: 100%;
   height: 100%;
   border: none;
-  pointer-events: none; /* Evita interacción directa con el iframe */
+  pointer-events: none;
+  /* Evita interacción directa con el iframe */
 }
 
 /* Project Controls */
@@ -350,8 +429,13 @@ footer a:hover {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .close-zoom {
@@ -381,32 +465,33 @@ footer a:hover {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .project-controls {
-    opacity: 1; /* Siempre visible en móvil */
+    opacity: 1;
+    /* Siempre visible en móvil */
   }
-  
+
   .btn-control {
     width: 35px;
     height: 35px;
   }
-  
+
   .btn-control svg {
     width: 16px;
     height: 16px;
   }
-  
+
   .project-info h3 {
     font-size: 1.1rem;
   }
-  
+
   .project-info p {
     font-size: 0.9rem;
   }
-  
+
   .zoomed-content {
     width: 95%;
     height: 80%;
   }
-  
+
   .close-zoom {
     right: 20px;
     font-size: 30px;
@@ -415,9 +500,10 @@ footer a:hover {
 
 @media (max-width: 576px) {
   .iframe-container {
-    padding-top: 75%; /* Más alto en móviles pequeños */
+    padding-top: 75%;
+    /* Más alto en móviles pequeños */
   }
-  
+
   .project-info {
     padding: 15px;
   }
