@@ -5,42 +5,42 @@
       "name": "Emperador Koi", 
       "price": 14.50, 
       "description": "Atún picante y pepino, cubierto con láminas de salmón flameado, aguacate, perlas de trufa y reducción de anguila.", 
-      "image": "img/emperador_koi.png" 
+      "image": "img/emperador_koi_new.png" 
     },
     { 
       "id": "salmon_picon", 
       "name": "Salmón Picón", 
       "price": 13.50, 
       "description": "Salmón fresco con salsa kimuchi, coronado con crujiente de tempura dorado, rodaja de jalapeño y toque de lima.", 
-      "image": "img/salmon_picon.png" 
+      "image": "img/salmon_picon_new.png" 
     },
     { 
       "id": "el_crujiente", 
       "name": "El Crujiente", 
       "price": 12.95, 
       "description": "Langostino tempura y queso crema, envuelto en panko dorado con salsa teriyaki y sésamo tostado.", 
-      "image": "img/crujiente.png" 
+      "image": "img/el_crujiente_new.png" 
     },
     { 
       "id": "volcan_tuna", 
       "name": "Volcán Tuna", 
       "price": 13.95, 
       "description": "Roll California cubierto con tartar de atún rojo picante, cebollino y masago, gratinado ligeramente.", 
-      "image": "img/emperador_koi.png" 
+      "image": "img/volcan_tuna.png" 
     },
     { 
       "id": "dragon_dorado", 
       "name": "Dragón Dorado", 
       "price": 14.00, 
       "description": "Anguila kabayaki y pepino, cubierto completamente de aguacate con salsa unagi y huevas de salmón.", 
-      "image": "img/crujiente.png" 
+      "image": "img/dragon_dorado.png" 
     },
     { 
       "id": "arcoiris_tropico", 
       "name": "Arcoíris Trópico", 
       "price": 13.50, 
       "description": "Cangrejo real y pepino, cubierto de atún, salmón, pez mantequilla y aguacate con salsa de mango.", 
-      "image": "img/salmon_picon.png" 
+      "image": "img/arcoiris_tropico.png" 
     }
   ],
   "classicRolls": [
